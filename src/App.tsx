@@ -54,7 +54,68 @@ const COND_BADGE: Record<ConditionStatus, string> = {
   pending: 'bg-slate-100 text-[var(--color-text-muted)]',
 }
 
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '')  // e.g. "/ai-captain-dashboard"
+
+function useAuth() {
+  const [user, setUser] = useState<{ name: string; avatar: string } | null>(null)
+  const [checking, setChecking] = useState(true)
+  const [authEnabled, setAuthEnabled] = useState(false)
+
+  useEffect(() => {
+    // Check for token in URL fragment (OAuth callback)
+    const hash = window.location.hash
+    if (hash.includes('token=')) {
+      const token = hash.split('token=')[1]?.split('&')[0]
+      if (token) {
+        localStorage.setItem('captain_token', token)
+        window.location.hash = ''
+      }
+    }
+
+    // Check health to see if auth is enabled
+    fetch(`${BASE}/api/health`)
+      .then(r => r.json())
+      .then(h => {
+        if (!h.auth) {
+          setAuthEnabled(false)
+          setUser({ name: 'Local', avatar: '' })
+          setChecking(false)
+          return
+        }
+        setAuthEnabled(true)
+        // Validate stored token
+        const token = localStorage.getItem('captain_token')
+        if (!token) { setChecking(false); return }
+        return fetch(`${BASE}/api/auth/me`, {
+          headers: { Authorization: `Bearer ${token}` },
+        }).then(r => {
+          if (!r.ok) { localStorage.removeItem('captain_token'); setChecking(false); return }
+          return r.json().then(u => { setUser(u); setChecking(false) })
+        })
+      })
+      .catch(() => {
+        // If health check fails, assume local mode
+        setUser({ name: 'Local', avatar: '' })
+        setChecking(false)
+      })
+  }, [])
+
+  async function login() {
+    const r = await fetch(`${BASE}/api/auth/feishu/login`)
+    const { url } = await r.json()
+    if (url) window.location.href = url
+  }
+
+  function logout() {
+    localStorage.removeItem('captain_token')
+    setUser(null)
+  }
+
+  return { user, checking, authEnabled, login, logout }
+}
+
 export default function App() {
+  const { user, checking, authEnabled, login, logout } = useAuth()
   const [data, setData] = useState<AppData | null>(null)
   const [opFilter, setOpFilter] = useState<OperationStatus>('进行中')
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -64,14 +125,18 @@ export default function App() {
   const [syncMsg, setSyncMsg] = useState('')
 
   useEffect(() => {
-    fetch('/data.json').then(r => r.json()).then(setData)
+    fetch(`${BASE}/data.json`).then(r => r.json()).then(setData)
   }, [])
 
   async function handleSync() {
     setSyncing(true)
     setSyncMsg('')
     try {
-      const res = await fetch('/api/sync', { method: 'POST' })
+      const token = localStorage.getItem('captain_token')
+      const res = await fetch(`${BASE}/api/sync`, {
+        method: 'POST',
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      })
       const body = await res.json()
       if (body.ok && body.data) {
         setData(body.data)
@@ -86,6 +151,26 @@ export default function App() {
       setTimeout(() => setSyncMsg(''), 5000)
     }
   }
+
+  // Auth gate
+  if (checking) return (
+    <div className="flex items-center justify-center min-h-screen text-lg text-slate-400 font-sans">验证中...</div>
+  )
+  if (authEnabled && !user) return (
+    <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-[var(--color-brand-50)]">
+      <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] text-white rounded-2xl shadow-lg">
+        <Zap size={32} />
+      </div>
+      <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">AI Captain 项目驾驶舱</h1>
+      <button
+        onClick={login}
+        className="flex items-center gap-2 px-6 py-3 rounded-xl text-base font-medium bg-[var(--color-brand)] text-white hover:bg-[var(--color-brand-dark)] transition-all shadow-lg shadow-purple-200"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        飞书登录
+      </button>
+    </div>
+  )
 
   if (!data) return (
     <div className="flex items-center justify-center min-h-screen text-lg text-slate-400 font-sans">加载中...</div>
@@ -165,6 +250,19 @@ export default function App() {
               <span className={`text-xs px-2 py-1 rounded-lg ${syncMsg.includes('失败') || syncMsg.includes('错误') ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
                 {syncMsg}
               </span>
+            )}
+            {user && authEnabled && (
+              <div className="flex items-center gap-2 ml-2 pl-2 border-l border-slate-200">
+                {user.avatar ? (
+                  <img src={user.avatar} className="w-7 h-7 rounded-full" alt="" />
+                ) : (
+                  <div className="w-7 h-7 rounded-full bg-[var(--color-brand-100)] flex items-center justify-center text-xs font-bold text-[var(--color-brand)]">
+                    {user.name?.[0] || '?'}
+                  </div>
+                )}
+                <span className="text-xs text-slate-500">{user.name}</span>
+                <button onClick={logout} className="text-[11px] text-slate-400 hover:text-red-500 transition-colors">退出</button>
+              </div>
             )}
           </div>
         </header>

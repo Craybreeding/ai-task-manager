@@ -1,127 +1,285 @@
 #!/usr/bin/env python3
 """
-AI Captain Server
-- Serves static files from dist/
-- /api/sync — runs auto_sync_projects.py to pull latest from GitHub
+AI Captain Server — FastAPI + Feishu OAuth
+- Serves static SPA from dist/
+- /api/sync — GitHub data sync
+- /api/auth/feishu/* — Feishu OAuth login
 """
+import hashlib
 import json
+import os
+import secrets
 import subprocess
 import sys
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+import time
 from pathlib import Path
-from urllib.parse import urlparse
+
+import httpx
+import jwt
+from dotenv import load_dotenv
+from fastapi import FastAPI, Request, HTTPException, Depends
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse
+from fastapi.staticfiles import StaticFiles
+
+load_dotenv()
 
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
 DATA_FILE = ROOT / "public" / "data.json"
 SYNC_SCRIPT = ROOT / "scripts" / "auto_sync_projects.py"
 
-PORT = 4174
+# ── Config ───────────────────────────────────────
+DEPLOY_MODE = os.getenv("DEPLOY_MODE", "local")  # "local" or "cloud"
+BASE_PATH = "/ai-captain-dashboard"
+PORT = int(os.getenv("PORT", "4175"))
+
+# Feishu OAuth
+FEISHU_APP_ID = os.getenv("FEISHU_APP_ID", "")
+FEISHU_APP_SECRET = os.getenv("FEISHU_APP_SECRET", "")
+FEISHU_REDIRECT_URI = os.getenv(
+    "FEISHU_REDIRECT_URI",
+    f"https://ai.goodideaggn.com{BASE_PATH}/api/auth/feishu/callback",
+)
+JWT_SECRET = os.getenv("JWT_SECRET", "ai-captain-dev-secret-change-me")
+JWT_EXPIRY = 86400 * 7  # 7 days
+
+# ── State ────────────────────────────────────────
+_oauth_states: dict[str, float] = {}  # state -> expiry_ts
+_app_token_cache: dict[str, tuple[str, float]] = {}  # key -> (token, expiry)
+
+app = FastAPI(title="AI Captain", root_path="")
 
 
-class CaptainHandler(SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=str(DIST), **kwargs)
+# ── Auth Helpers ─────────────────────────────────
+def auth_enabled() -> bool:
+    return DEPLOY_MODE == "cloud" and bool(FEISHU_APP_ID)
 
-    def do_POST(self):
-        path = urlparse(self.path).path
 
-        if path == "/api/sync":
-            self._handle_sync()
-        else:
-            self.send_error(404)
+async def get_feishu_app_token() -> str:
+    """Get or refresh Feishu app_access_token."""
+    cached = _app_token_cache.get("app")
+    if cached and cached[1] > time.time():
+        return cached[0]
 
-    def do_GET(self):
-        path = urlparse(self.path).path
+    async with httpx.AsyncClient() as client:
+        r = await client.post(
+            "https://open.feishu.cn/open-apis/auth/v3/app_access_token/internal",
+            json={"app_id": FEISHU_APP_ID, "app_secret": FEISHU_APP_SECRET},
+        )
+        data = r.json()
+        token = data.get("app_access_token", "")
+        expire = data.get("expire", 7200)
+        _app_token_cache["app"] = (token, time.time() + expire - 300)
+        return token
 
-        # API routes
-        if path == "/api/sync":
-            self._handle_sync()
-            return
 
-        # SPA fallback: serve index.html for non-file paths
-        file_path = DIST / path.lstrip("/")
-        if not file_path.exists() or file_path.is_dir():
-            if not path.startswith("/api") and "." not in path.split("/")[-1]:
-                self.path = "/index.html"
+def create_jwt(user_id: str, name: str, avatar: str = "") -> str:
+    return jwt.encode(
+        {
+            "sub": user_id,
+            "name": name,
+            "avatar": avatar,
+            "exp": int(time.time()) + JWT_EXPIRY,
+        },
+        JWT_SECRET,
+        algorithm="HS256",
+    )
 
-        super().do_GET()
 
-    def _handle_sync(self):
-        """Run auto_sync_projects.py and return updated data."""
-        self.send_header_cors()
+def decode_jwt(token: str) -> dict | None:
+    try:
+        return jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+    except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+        return None
 
-        try:
-            # Run sync: --write --with-issues
-            cmd = [
-                sys.executable, str(SYNC_SCRIPT),
-                "--write", "--with-issues",
-            ]
-            result = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=120,
-                cwd=str(ROOT),
+
+async def get_current_user(request: Request) -> dict | None:
+    """Extract user from Authorization header or query param."""
+    if not auth_enabled():
+        return {"sub": "local", "name": "Local Dev"}
+
+    token = None
+    auth = request.headers.get("authorization", "")
+    if auth.startswith("Bearer "):
+        token = auth[7:]
+    else:
+        token = request.query_params.get("token")
+
+    if not token:
+        return None
+    return decode_jwt(token)
+
+
+def require_auth(user=Depends(get_current_user)):
+    if auth_enabled() and user is None:
+        raise HTTPException(401, "Unauthorized")
+    return user
+
+
+# ── Auth Routes ──────────────────────────────────
+@app.get(f"{BASE_PATH}/api/auth/feishu/login")
+async def feishu_login():
+    if not auth_enabled():
+        return {"url": None, "mode": "local"}
+
+    state = secrets.token_urlsafe(32)
+    _oauth_states[state] = time.time() + 300  # 5 min TTL
+
+    # Cleanup expired states
+    now = time.time()
+    expired = [k for k, v in _oauth_states.items() if v < now]
+    for k in expired:
+        del _oauth_states[k]
+
+    url = (
+        f"https://open.feishu.cn/open-apis/authen/v1/authorize"
+        f"?app_id={FEISHU_APP_ID}"
+        f"&redirect_uri={FEISHU_REDIRECT_URI}"
+        f"&response_type=code"
+        f"&state={state}"
+    )
+    return {"url": url, "state": state}
+
+
+@app.get(f"{BASE_PATH}/api/auth/feishu/callback")
+async def feishu_callback(code: str = "", state: str = ""):
+    if not auth_enabled():
+        return RedirectResponse(f"{BASE_PATH}/")
+
+    # Verify state
+    if state not in _oauth_states or _oauth_states[state] < time.time():
+        raise HTTPException(400, "Invalid or expired state")
+    del _oauth_states[state]
+
+    # Exchange code for user token
+    app_token = await get_feishu_app_token()
+    async with httpx.AsyncClient() as client:
+        r = await client.post(
+            "https://open.feishu.cn/open-apis/authen/v1/oidc/access_token",
+            headers={"Authorization": f"Bearer {app_token}"},
+            json={"grant_type": "authorization_code", "code": code},
+        )
+        token_data = r.json().get("data", {})
+        user_access_token = token_data.get("access_token", "")
+
+        if not user_access_token:
+            raise HTTPException(400, f"Failed to get access token: {r.text}")
+
+        # Get user info
+        r2 = await client.get(
+            "https://open.feishu.cn/open-apis/authen/v1/user_info",
+            headers={"Authorization": f"Bearer {user_access_token}"},
+        )
+        user_info = r2.json().get("data", {})
+
+    open_id = user_info.get("open_id", "")
+    name = user_info.get("name", "Unknown")
+    avatar = user_info.get("avatar_url", "")
+
+    # Issue JWT
+    token = create_jwt(open_id, name, avatar)
+
+    # Redirect to frontend with token in fragment
+    return RedirectResponse(f"{BASE_PATH}/#token={token}")
+
+
+@app.get(f"{BASE_PATH}/api/auth/me")
+async def auth_me(user=Depends(require_auth)):
+    return {
+        "user_id": user.get("sub"),
+        "name": user.get("name"),
+        "avatar": user.get("avatar", ""),
+    }
+
+
+@app.get(f"{BASE_PATH}/api/health")
+async def health():
+    return {"status": "ok", "mode": DEPLOY_MODE, "auth": auth_enabled()}
+
+
+# ── Sync Route ───────────────────────────────────
+@app.post(f"{BASE_PATH}/api/sync")
+@app.get(f"{BASE_PATH}/api/sync")
+async def sync_data(user=Depends(require_auth)):
+    try:
+        cmd = [sys.executable, str(SYNC_SCRIPT), "--write", "--with-issues"]
+        result = subprocess.run(
+            cmd, capture_output=True, text=True, timeout=120, cwd=str(ROOT)
+        )
+        if result.returncode != 0:
+            return JSONResponse(
+                500,
+                {"ok": False, "error": result.stderr[-500:] if result.stderr else "sync failed"},
             )
 
-            if result.returncode != 0:
-                self._json_response(500, {
-                    "ok": False,
-                    "error": result.stderr[-500:] if result.stderr else "sync failed",
-                })
-                return
+        if DATA_FILE.exists():
+            data = json.loads(DATA_FILE.read_text())
+            # Copy to dist for static serving
+            dist_data = DIST / "data.json"
+            if DIST.exists():
+                dist_data.write_text(DATA_FILE.read_text())
+            return {
+                "ok": True,
+                "projects": len(data.get("projects", [])),
+                "tasks": len(data.get("tasks", [])),
+                "conditions": len(data.get("conditions", [])),
+                "data": data,
+            }
+        return JSONResponse(500, {"ok": False, "error": "data.json not found"})
 
-            # Read the updated data.json
-            if DATA_FILE.exists():
-                data = json.loads(DATA_FILE.read_text())
-                # Also copy to dist/ for static serving
-                (DIST / "data.json").write_text(DATA_FILE.read_text())
-                self._json_response(200, {
-                    "ok": True,
-                    "projects": len(data.get("projects", [])),
-                    "tasks": len(data.get("tasks", [])),
-                    "conditions": len(data.get("conditions", [])),
-                    "log": result.stdout[-1000:] if result.stdout else "",
-                    "data": data,
-                })
-            else:
-                self._json_response(500, {"ok": False, "error": "data.json not found after sync"})
+    except subprocess.TimeoutExpired:
+        return JSONResponse(504, {"ok": False, "error": "sync timed out"})
+    except Exception as e:
+        return JSONResponse(500, {"ok": False, "error": str(e)})
 
-        except subprocess.TimeoutExpired:
-            self._json_response(504, {"ok": False, "error": "sync timed out (120s)"})
-        except Exception as e:
-            self._json_response(500, {"ok": False, "error": str(e)})
 
-    def send_header_cors(self):
-        """Allow CORS for dev."""
-        pass  # Headers set in _json_response
+# ── Static SPA Serving ───────────────────────────
+# Mount static assets (JS/CSS/images)
+if DIST.exists():
+    app.mount(
+        f"{BASE_PATH}/assets",
+        StaticFiles(directory=str(DIST / "assets")),
+        name="assets",
+    )
 
-    def _json_response(self, code: int, body: dict):
-        payload = json.dumps(body, ensure_ascii=False).encode()
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Content-Length", len(payload))
-        self.end_headers()
-        self.wfile.write(payload)
 
-    def log_message(self, format, *args):
-        # Quieter logging
-        if "/api/" in str(args[0]) if args else False:
-            super().log_message(format, *args)
+@app.get(f"{BASE_PATH}/data.json")
+async def serve_data():
+    """Serve data.json (public, no auth needed for initial load)."""
+    f = DIST / "data.json" if (DIST / "data.json").exists() else DATA_FILE
+    return FileResponse(f, media_type="application/json")
+
+
+@app.get(f"{BASE_PATH}/{{path:path}}")
+async def serve_spa(path: str):
+    """SPA fallback — serve index.html for all non-API routes."""
+    # Try exact file first
+    file_path = DIST / path
+    if file_path.exists() and file_path.is_file():
+        return FileResponse(file_path)
+    # Fallback to index.html
+    index = DIST / "index.html"
+    if index.exists():
+        return FileResponse(index)
+    return JSONResponse(404, {"error": "Not found. Run 'npm run build' first."})
+
+
+# ── Redirect bare path ───────────────────────────
+@app.get("/ai-captain-dashboard")
+async def redirect_to_trailing():
+    return RedirectResponse(f"{BASE_PATH}/", status_code=301)
 
 
 def main():
-    if not DIST.exists():
-        print(f"Error: {DIST} not found. Run 'npm run build' first.")
-        sys.exit(1)
+    import uvicorn
 
-    server = HTTPServer(("0.0.0.0", PORT), CaptainHandler)
-    print(f"🚀 AI Captain serving on http://localhost:{PORT}")
-    print(f"   Static: {DIST}")
-    print(f"   Sync:   POST /api/sync")
-    try:
-        server.serve_forever()
-    except KeyboardInterrupt:
-        print("\nShutting down.")
+    if not DIST.exists():
+        print(f"⚠️  {DIST} not found. Run 'npm run build' first.")
+        print(f"   Starting anyway for API-only mode...")
+
+    print(f"🚀 AI Captain on http://localhost:{PORT}{BASE_PATH}/")
+    print(f"   Mode: {DEPLOY_MODE} | Auth: {auth_enabled()}")
+    uvicorn.run(app, host="0.0.0.0", port=PORT, log_level="info")
 
 
 if __name__ == "__main__":
