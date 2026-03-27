@@ -38,7 +38,7 @@ FEISHU_APP_ID = os.getenv("FEISHU_APP_ID", "")
 FEISHU_APP_SECRET = os.getenv("FEISHU_APP_SECRET", "")
 FEISHU_REDIRECT_URI = os.getenv(
     "FEISHU_REDIRECT_URI",
-    f"https://ai-captain-dashboard.goodideaggn.com{BASE_PATH}/api/auth/feishu/callback",
+    f"https://ai.goodideaggn.com{BASE_PATH}/api/auth/feishu/callback",
 )
 JWT_SECRET = os.getenv("JWT_SECRET", "ai-captain-dev-secret-change-me")
 JWT_EXPIRY = 86400 * 7  # 7 days
