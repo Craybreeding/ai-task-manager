@@ -6,17 +6,18 @@
       "stage": "正式上线(PROD)",
       "targetStage": "正式上线(PROD)",
       "operationStatus": "进行中",
-      "status": "yellow",
+      "status": "green",
       "sponsor": "ggn",
       "captain": "Craybreeding",
       "blocker": "pinxiao Clash Verge TUN 黑洞导致网络不稳定",
-      "currentFocus": "proxy fallback + suggest-keywords 修复",
+      "currentFocus": "网络问题已修复，正常运行中",
       "nextCheckpoint": "待确认",
       "latestFeedback": "",
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "blockers": []
     },
     {
       "id": "consumer-insights",
@@ -29,6 +30,24 @@
       "captain": "swr222-cmd",
       "blocker": "待确认",
       "currentFocus": "WS keepalive + login panel 稳定性",
+      "nextCheckpoint": "待确认",
+      "latestFeedback": "",
+      "feedbackFrom": "",
+      "wau": 0,
+      "weeklyRuns": 0,
+      "hoursSaved": 0
+    },
+    {
+      "id": "ai-captain-dashboard",
+      "name": "ai-captain-dashboard",
+      "stage": "验证中",
+      "targetStage": "试运行(MVP)",
+      "operationStatus": "进行中",
+      "status": "green",
+      "sponsor": "待确认",
+      "captain": "待确认",
+      "blocker": "待确认",
+      "currentFocus": "待确认",
       "nextCheckpoint": "待确认",
       "latestFeedback": "",
       "feedbackFrom": "",
@@ -185,7 +204,7 @@
       "name": "openclaw-skillhub",
       "stage": "正式上线(PROD)",
       "targetStage": "验证中",
-      "operationStatus": "进行中",
+      "operationStatus": "已暂停",
       "status": "green",
       "sponsor": "待确认",
       "captain": "swr222-cmd",
@@ -767,12 +786,62 @@
   ],
   "tasks": [
     {
+      "id": "consumer-insight-v2-issue-2",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "",
+      "title": "待做：launchd 自启 + cloudflared 迁移 + 抖音交互式登录",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/2"
+    },
+    {
+      "id": "consumer-insight-v2-issue-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "",
+      "title": "v5.0.0 多账号管理 + 抖音双平台 (Phase 1-6) ✅",
+      "type": "feature",
+      "status": "done",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/1"
+    },
+    {
+      "id": "strategy-chat-issue-99",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "References documents",
+      "type": "feature",
+      "status": "active",
+      "assignee": "LiTa-o",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/99"
+    },
+    {
+      "id": "strategy-chat-issue-98",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "添加用户设置模块",
+      "type": "feature",
+      "status": "active",
+      "assignee": "Healer-YuMeng",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/98"
+    },
+    {
+      "id": "strategy-chat-issue-97",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "将 RAG 功能集成进入 Langfuse",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/97"
+    },
+    {
       "id": "strategy-chat-issue-94",
       "projectId": "strategy-chat",
       "conditionId": "",
       "title": "New Chat名字不会刷新",
       "type": "feature",
-      "status": "pending",
+      "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/94"
     },
@@ -789,7 +858,7 @@
     {
       "id": "strategy-chat-issue-82",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "针对chat聊天框中的各类附件/文档/链接的专项优化",
       "type": "feature",
       "status": "pending",
@@ -809,7 +878,7 @@
     {
       "id": "strategy-chat-issue-80",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "扩大单个上传附件大小限制",
       "type": "feature",
       "status": "active",
@@ -819,7 +888,7 @@
     {
       "id": "strategy-chat-issue-79",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "[strategy_chat] 优化修改桃姐遇到的文件中公式列的问题",
       "type": "feature",
       "status": "pending",
@@ -829,10 +898,10 @@
     {
       "id": "strategy-chat-issue-78",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c03",
+      "conditionId": "",
       "title": "添加对话分享功能（只读）",
       "type": "feature",
-      "status": "active",
+      "status": "done",
       "assignee": "Healer-YuMeng",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/78"
     },
@@ -849,7 +918,7 @@
     {
       "id": "strategy-chat-issue-74",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c05",
+      "conditionId": "",
       "title": "Strategy Chat: 以skill形式扩展应用的飞书文档权限",
       "type": "feature",
       "status": "pending",
@@ -892,7 +961,7 @@
       "conditionId": "",
       "title": "[strategy-chat] 功能建议：增加飞书网页读取功能",
       "type": "feature",
-      "status": "active",
+      "status": "done",
       "assignee": "LiTa-o",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/69"
     },
@@ -909,7 +978,7 @@
     {
       "id": "strategy-chat-issue-66",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c01",
+      "conditionId": "",
       "title": "End to end workflow",
       "type": "feature",
       "status": "pending",
@@ -922,14 +991,14 @@
       "conditionId": "",
       "title": "Logout when token refresh cannot be performed",
       "type": "feature",
-      "status": "pending",
+      "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/65"
     },
     {
       "id": "strategy-chat-issue-64",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "allow aggregated data only excel file to be uploaded in strategy chat",
       "type": "feature",
       "status": "done",
@@ -939,7 +1008,7 @@
     {
       "id": "strategy-chat-issue-57",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "optimize UI docs upload approach",
       "type": "feature",
       "status": "done",
@@ -1069,7 +1138,7 @@
     {
       "id": "strategy-chat-issue-31",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c04",
+      "conditionId": "",
       "title": "Fix: RemoteProtocolError (Server disconnected) in attachment_service",
       "type": "feature",
       "status": "done",
@@ -1079,17 +1148,17 @@
     {
       "id": "yuntu-datapicker-issue-9",
       "projectId": "yuntu-datapicker",
-      "conditionId": "yuntu-datapicker-c01",
+      "conditionId": "",
       "title": "前端各模块支持单选功能",
       "type": "feature",
-      "status": "active",
+      "status": "done",
       "assignee": "Eric-Zhang1990",
       "url": "https://github.com/goodidea-ggn/yuntu-datapicker/issues/9"
     },
     {
       "id": "yuntu-datapicker-issue-7",
       "projectId": "yuntu-datapicker",
-      "conditionId": "yuntu-datapicker-c03",
+      "conditionId": "",
       "title": "本竞品投放表现&达人矩阵--取数和后处理",
       "type": "feature",
       "status": "done",
@@ -1099,7 +1168,7 @@
     {
       "id": "yuntu-datapicker-issue-4",
       "projectId": "yuntu-datapicker",
-      "conditionId": "yuntu-datapicker-c03",
+      "conditionId": "",
       "title": "品牌心智、行业搜索洞察、触点能效--数据后处理",
       "type": "feature",
       "status": "done",
@@ -1109,7 +1178,7 @@
     {
       "id": "yuntu-datapicker-issue-2",
       "projectId": "yuntu-datapicker",
-      "conditionId": "yuntu-datapicker-c02",
+      "conditionId": "",
       "title": "onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1119,7 +1188,7 @@
     {
       "id": "yuntu-datapicker-issue-1",
       "projectId": "yuntu-datapicker",
-      "conditionId": "yuntu-datapicker-c04",
+      "conditionId": "",
       "title": "setup CI/CD",
       "type": "feature",
       "status": "done",
@@ -1129,7 +1198,7 @@
     {
       "id": "xingtu-selector-issue-12",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c01",
+      "conditionId": "",
       "title": "星图项目登录 Bug：第一次登录失败，第二次点击直接显示已登录",
       "type": "feature",
       "status": "pending",
@@ -1139,7 +1208,7 @@
     {
       "id": "xingtu-selector-issue-7",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c04",
+      "conditionId": "",
       "title": "setup CI/CD and onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1149,7 +1218,7 @@
     {
       "id": "xingtu-selector-issue-6",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c03",
+      "conditionId": "",
       "title": "筛选MCN的刊例",
       "type": "feature",
       "status": "pending",
@@ -1159,7 +1228,7 @@
     {
       "id": "xingtu-selector-issue-3",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c01",
+      "conditionId": "",
       "title": "Project build script and scaffold init",
       "type": "feature",
       "status": "done",
@@ -1169,7 +1238,7 @@
     {
       "id": "xingtu-selector-issue-1",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c02",
+      "conditionId": "",
       "title": "Apply Tech Assistant into xingtu selector",
       "type": "feature",
       "status": "done",
@@ -1179,7 +1248,7 @@
     {
       "id": "ggn-workspace-issue-20",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c02",
+      "conditionId": "",
       "title": "move frontend into backend repo",
       "type": "feature",
       "status": "done",
@@ -1189,7 +1258,7 @@
     {
       "id": "ggn-workspace-issue-18",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c04",
+      "conditionId": "",
       "title": "setup CI/CD",
       "type": "feature",
       "status": "done",
@@ -1199,7 +1268,7 @@
     {
       "id": "ggn-workspace-issue-17",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c02",
+      "conditionId": "",
       "title": "onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1209,7 +1278,7 @@
     {
       "id": "ggn-workspace-issue-13",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c03",
+      "conditionId": "",
       "title": "User feedback on backend",
       "type": "feature",
       "status": "active",
@@ -1219,7 +1288,7 @@
     {
       "id": "ggn-workspace-issue-6",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c01",
+      "conditionId": "",
       "title": "PPT template upload and list API",
       "type": "feature",
       "status": "active",
@@ -1229,7 +1298,7 @@
     {
       "id": "ggn-workspace-issue-5",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c01",
+      "conditionId": "",
       "title": "PPT template generate page",
       "type": "feature",
       "status": "active",
@@ -1239,7 +1308,7 @@
     {
       "id": "ggn-workspace-issue-4",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c01",
+      "conditionId": "",
       "title": "Creative workshop Implementation",
       "type": "feature",
       "status": "active",
@@ -1249,7 +1318,7 @@
     {
       "id": "ggn-workspace-issue-3",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c01",
+      "conditionId": "",
       "title": "VI logo upload and main color extract API",
       "type": "feature",
       "status": "active",
@@ -1259,7 +1328,7 @@
     {
       "id": "ggn-workspace-issue-2",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c01",
+      "conditionId": "",
       "title": "Core Product image upload API",
       "type": "feature",
       "status": "active",
@@ -1269,7 +1338,7 @@
     {
       "id": "ggn-workspace-frontend-issue-19",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "Apply Tech Assistant into ggn workspace",
       "type": "feature",
       "status": "pending",
@@ -1279,7 +1348,7 @@
     {
       "id": "ggn-workspace-frontend-issue-17",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c03",
+      "conditionId": "",
       "title": "PPT template page enhancement base on feedback",
       "type": "feature",
       "status": "active",
@@ -1289,7 +1358,7 @@
     {
       "id": "ggn-workspace-frontend-issue-15",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c03",
+      "conditionId": "",
       "title": "User feedback on UI experience",
       "type": "feature",
       "status": "active",
@@ -1309,7 +1378,7 @@
     {
       "id": "ggn-workspace-frontend-issue-5",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "PPT template generate page",
       "type": "feature",
       "status": "active",
@@ -1319,7 +1388,7 @@
     {
       "id": "ggn-workspace-frontend-issue-4",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "Creative workshop Implementation",
       "type": "feature",
       "status": "active",
@@ -1329,7 +1398,7 @@
     {
       "id": "ggn-workspace-frontend-issue-3",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "Core Product image upload",
       "type": "feature",
       "status": "active",
@@ -1339,7 +1408,7 @@
     {
       "id": "ggn-workspace-frontend-issue-2",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "VI logo upload and main color extract",
       "type": "feature",
       "status": "active",
@@ -1347,9 +1416,19 @@
       "url": "https://github.com/goodidea-ggn/ggn-workspace-frontend/issues/2"
     },
     {
+      "id": "draft-audit-issue-3",
+      "projectId": "draft-audit",
+      "conditionId": "",
+      "title": "Introduce brief version - draft audit",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/draft-audit/issues/3"
+    },
+    {
       "id": "draft-audit-issue-1",
       "projectId": "draft-audit",
-      "conditionId": "draft-audit-c01",
+      "conditionId": "",
       "title": "Apply Tech Assistant into draft audit",
       "type": "feature",
       "status": "active",
@@ -1359,7 +1438,7 @@
     {
       "id": "tech-assistant-issue-6",
       "projectId": "tech-assistant",
-      "conditionId": "tech-assistant-c03",
+      "conditionId": "",
       "title": "[tech-assistant] 建立系统监控机制：各产品用户活跃度统计",
       "type": "feature",
       "status": "pending",
@@ -1369,7 +1448,7 @@
     {
       "id": "tech-assistant-issue-5",
       "projectId": "tech-assistant",
-      "conditionId": "tech-assistant-c04",
+      "conditionId": "",
       "title": "引入 RAG 定期评判机制",
       "type": "feature",
       "status": "pending",
@@ -1379,7 +1458,7 @@
     {
       "id": "tech-assistant-issue-4",
       "projectId": "tech-assistant",
-      "conditionId": "tech-assistant-c03",
+      "conditionId": "",
       "title": "引入应用使用情况监控机制",
       "type": "feature",
       "status": "pending",
@@ -1389,7 +1468,7 @@
     {
       "id": "tech-assistant-issue-3",
       "projectId": "tech-assistant",
-      "conditionId": "tech-assistant-c01",
+      "conditionId": "",
       "title": "research on DeepWiki-open and try integrate with it",
       "type": "feature",
       "status": "pending",
@@ -1399,7 +1478,7 @@
     {
       "id": "tech-assistant-issue-2",
       "projectId": "tech-assistant",
-      "conditionId": null,
+      "conditionId": "",
       "title": "Bug: Connection interrupted issue",
       "type": "feature",
       "status": "done",
@@ -1409,182 +1488,12 @@
     {
       "id": "tech-assistant-issue-1",
       "projectId": "tech-assistant",
-      "conditionId": null,
+      "conditionId": "",
       "title": "Bug: Excessive 429 errors with Gemini 3.1",
       "type": "feature",
       "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/1"
-    },
-    {
-      "id": "ci2-t01",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c01",
-      "title": "Bug #1: XHS 账号名显示'默认' → 登录后提取 nickname",
-      "type": "bug",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/pull/12"
-    },
-    {
-      "id": "ci2-t02",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c01",
-      "title": "Bug #2: PDF 导出截断 → CSS page-break-inside:avoid",
-      "type": "bug",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/pull/12"
-    },
-    {
-      "id": "ci2-t03",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c01",
-      "title": "Bug #3: Excel 导出分 sheet（双平台 4 个 sheet）",
-      "type": "bug",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/pull/12"
-    },
-    {
-      "id": "ci2-t04",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c01",
-      "title": "Bug #4: 平台选择+AI推荐搜索词确认无丢失",
-      "type": "bug",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/pull/12"
-    },
-    {
-      "id": "ci2-t05",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c02",
-      "title": "Release v5.1.0（含 PR #5-#12 全部修复）",
-      "type": "feature",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/releases"
-    },
-    {
-      "id": "ci2-t06",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c02",
-      "title": "pinxiao 部署 v5.1.0 + dist rsync",
-      "type": "ops",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t07",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c03",
-      "title": "GitHub Projects #9 看板创建 + Issue/PR 关联",
-      "type": "feature",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://github.com/orgs/goodidea-ggn/projects/9"
-    },
-    {
-      "id": "ci2-t08",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c04",
-      "title": "Tunnel 协议切换 --protocol http2（UDP/QUIC 被封）",
-      "type": "ops",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t09",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c04",
-      "title": "验证 insight.goodideaggn.com 公网可达",
-      "type": "ops",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": "https://insight.goodideaggn.com"
-    },
-    {
-      "id": "ci2-t10",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c05",
-      "title": "deploy-verify-reminder hook 加到 settings.json",
-      "type": "ops",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t11",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c06",
-      "title": "gemini-2.0-flash → gemini-2.5-flash（旧模型已下线）",
-      "type": "feature",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t12",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c06",
-      "title": "改用 httpx REST API + proxy fallback 链（7897→17897→直连）",
-      "type": "feature",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t13",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c06",
-      "title": ".env 去掉全局 HTTPS_PROXY（影响 Supabase asyncpg）",
-      "type": "ops",
-      "status": "done",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t14",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c07",
-      "title": "远程桌面到 pinxiao → 关闭 Clash Verge TUN 模式",
-      "type": "ops",
-      "status": "blocked",
-      "assignee": "ggn",
-      "url": ""
-    },
-    {
-      "id": "ci2-t15",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c07",
-      "title": "重启 app + 验证 AI 推荐关键词功能",
-      "type": "ops",
-      "status": "pending",
-      "assignee": "Craybreeding",
-      "url": ""
-    },
-    {
-      "id": "ci2-t16",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "",
-      "title": "launchd 自启 + cloudflared 迁移到 /usr/local/bin",
-      "type": "ops",
-      "status": "pending",
-      "assignee": "待确认",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/2"
-    },
-    {
-      "id": "ci2-t17",
-      "projectId": "consumer-insight-v2",
-      "conditionId": "",
-      "title": "抖音交互式登录二维码区域裁剪放大",
-      "type": "feature",
-      "status": "pending",
-      "assignee": "待确认",
-      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/2"
     }
   ]
 }
