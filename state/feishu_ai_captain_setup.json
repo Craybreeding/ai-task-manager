@@ -1,0 +1,12 @@
+{
+  "app_name": "AI Captain 项目总台",
+  "app_token": "XDXnbD5Bca3vwMslcEFcRfmzn3w",
+  "tables": {
+    "项目主表": "tblXhSeQ0KkmiSY5",
+    "升级条件表": "tblxRVYXoSAo1cTN",
+    "任务表": "tblKdzqIcMKdViaS",
+    "周更新表": "tblvYbp94xg9Kjyi",
+    "Eval 表": "tblYI6i6f0jdxTiQ",
+    "运维事件表": "tblvDKQVXDIaIkvs"
+  }
+}
