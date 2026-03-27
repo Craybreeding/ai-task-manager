@@ -1,6 +1,24 @@
 {
   "projects": [
     {
+      "id": "ai-captain-dashboard",
+      "name": "AI Captain Dashboard",
+      "stage": "试运行(MVP)",
+      "targetStage": "正式上线(PROD)",
+      "operationStatus": "进行中",
+      "status": "green",
+      "sponsor": "ggn",
+      "captain": "ggn",
+      "blocker": "待确认",
+      "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
+      "nextCheckpoint": "待确认",
+      "latestFeedback": "",
+      "feedbackFrom": "",
+      "wau": 0,
+      "weeklyRuns": 0,
+      "hoursSaved": 0
+    },
+    {
       "id": "consumer-insight-v2",
       "name": "Consumer Insight v2",
       "stage": "正式上线(PROD)",
@@ -16,8 +34,7 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0,
-      "blockers": []
+      "hoursSaved": 0
     },
     {
       "id": "consumer-insights",
@@ -30,24 +47,6 @@
       "captain": "swr222-cmd",
       "blocker": "待确认",
       "currentFocus": "WS keepalive + login panel 稳定性",
-      "nextCheckpoint": "待确认",
-      "latestFeedback": "",
-      "feedbackFrom": "",
-      "wau": 0,
-      "weeklyRuns": 0,
-      "hoursSaved": 0
-    },
-    {
-      "id": "ai-captain-dashboard",
-      "name": "ai-captain-dashboard",
-      "stage": "验证中",
-      "targetStage": "试运行(MVP)",
-      "operationStatus": "进行中",
-      "status": "green",
-      "sponsor": "待确认",
-      "captain": "待确认",
-      "blocker": "待确认",
-      "currentFocus": "待确认",
       "nextCheckpoint": "待确认",
       "latestFeedback": "",
       "feedbackFrom": "",
@@ -777,7 +776,7 @@
       "category": "运维",
       "fromStage": "试运行(MVP)",
       "toStage": "正式上线(PROD)",
-      "status": "blocked",
+      "status": "done",
       "owner": "Craybreeding",
       "criteria": "关掉 Clash Verge TUN 模式",
       "issue": "",
@@ -804,6 +803,66 @@
       "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/1"
+    },
+    {
+      "id": "strategy-chat-issue-110",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "防止系统提示词泄漏",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/110"
+    },
+    {
+      "id": "strategy-chat-issue-109",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "防止系统提示词泄漏",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/109"
+    },
+    {
+      "id": "strategy-chat-issue-107",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "防止系统提示词泄漏",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/107"
+    },
+    {
+      "id": "strategy-chat-issue-105",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "防止系统提示词泄漏",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/105"
+    },
+    {
+      "id": "strategy-chat-issue-104",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "防止系统提示词泄漏",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/104"
+    },
+    {
+      "id": "strategy-chat-issue-100",
+      "projectId": "strategy-chat",
+      "conditionId": "",
+      "title": "精细化处理复杂 Excel 文件",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/100"
     },
     {
       "id": "strategy-chat-issue-99",
@@ -1146,6 +1205,36 @@
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/31"
     },
     {
+      "id": "draft-audit-issue-3",
+      "projectId": "draft-audit",
+      "conditionId": "",
+      "title": "Introduce brief version - draft audit",
+      "type": "feature",
+      "status": "active",
+      "assignee": "supermaty",
+      "url": "https://github.com/goodidea-ggn/draft-audit/issues/3"
+    },
+    {
+      "id": "draft-audit-issue-1",
+      "projectId": "draft-audit",
+      "conditionId": "",
+      "title": "Apply Tech Assistant into draft audit",
+      "type": "feature",
+      "status": "active",
+      "assignee": "LiTa-o",
+      "url": "https://github.com/goodidea-ggn/draft-audit/issues/1"
+    },
+    {
+      "id": "yuntu-datapicker-issue-13",
+      "projectId": "yuntu-datapicker",
+      "conditionId": "",
+      "title": "乐高周报取数模块",
+      "type": "feature",
+      "status": "active",
+      "assignee": "Eric-Zhang1990",
+      "url": "https://github.com/goodidea-ggn/yuntu-datapicker/issues/13"
+    },
+    {
       "id": "yuntu-datapicker-issue-9",
       "projectId": "yuntu-datapicker",
       "conditionId": "",
@@ -1414,26 +1503,6 @@
       "status": "active",
       "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/ggn-workspace-frontend/issues/2"
-    },
-    {
-      "id": "draft-audit-issue-3",
-      "projectId": "draft-audit",
-      "conditionId": "",
-      "title": "Introduce brief version - draft audit",
-      "type": "feature",
-      "status": "pending",
-      "assignee": "待确认",
-      "url": "https://github.com/goodidea-ggn/draft-audit/issues/3"
-    },
-    {
-      "id": "draft-audit-issue-1",
-      "projectId": "draft-audit",
-      "conditionId": "",
-      "title": "Apply Tech Assistant into draft audit",
-      "type": "feature",
-      "status": "active",
-      "assignee": "LiTa-o",
-      "url": "https://github.com/goodidea-ggn/draft-audit/issues/1"
     },
     {
       "id": "tech-assistant-issue-6",
