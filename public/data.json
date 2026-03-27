@@ -3,8 +3,8 @@
     {
       "id": "ai-captain-dashboard",
       "name": "AI Captain Dashboard",
-      "stage": "试运行(MVP)",
-      "targetStage": "正式上线(PROD)",
+      "stage": "验证中",
+      "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
       "sponsor": "ggn",
@@ -39,7 +39,7 @@
     {
       "id": "consumer-insights",
       "name": "Consumer Insights",
-      "stage": "正式上线(PROD)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -75,7 +75,7 @@
     {
       "id": "draft-audit",
       "name": "draft-audit",
-      "stage": "试运行(MVP)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -93,7 +93,7 @@
     {
       "id": "ggn-workspace",
       "name": "ggn-workspace",
-      "stage": "正式上线(PROD)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -111,7 +111,7 @@
     {
       "id": "ggn-workspace-frontend",
       "name": "ggn-workspace-frontend",
-      "stage": "正式上线(PROD)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -129,7 +129,7 @@
     {
       "id": "strategy-chat",
       "name": "strategy_chat",
-      "stage": "正式上线(PROD)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "red",
@@ -147,7 +147,7 @@
     {
       "id": "web-pilot",
       "name": "web-pilot",
-      "stage": "试运行(MVP)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -165,7 +165,7 @@
     {
       "id": "xingtu-selector",
       "name": "xingtu-selector",
-      "stage": "试运行(MVP)",
+      "stage": "验证中",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -201,7 +201,7 @@
     {
       "id": "openclaw-skillhub",
       "name": "openclaw-skillhub",
-      "stage": "正式上线(PROD)",
+      "stage": "需求拆解",
       "targetStage": "验证中",
       "operationStatus": "已暂停",
       "status": "green",
@@ -781,13 +781,208 @@
       "criteria": "关掉 Clash Verge TUN 模式",
       "issue": "",
       "dueDate": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-1",
+      "projectId": "ai-captain-dashboard",
+      "name": "功能完整性",
+      "category": "功能完善",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "ggn",
+      "criteria": "所有核心功能均已实现且无重大缺失",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-2",
+      "projectId": "ai-captain-dashboard",
+      "name": "系统稳定性",
+      "category": "运维稳定",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "ggn",
+      "criteria": "系统连续运行72小时无故障",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-3",
+      "projectId": "ai-captain-dashboard",
+      "name": "质量保障",
+      "category": "质量保障",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "ggn",
+      "criteria": "代码覆盖率不低于80%，缺陷率低于1%",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-4",
+      "projectId": "ai-captain-dashboard",
+      "name": "用户反馈",
+      "category": "用户验证",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "ggn",
+      "criteria": "收集至少100条用户反馈，用户满意度超过90%",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-5",
+      "projectId": "ai-captain-dashboard",
+      "name": "文档完整性",
+      "category": "文档规范",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "ggn",
+      "criteria": "完成所有功能的用户文档和开发者API文档",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-design-agent-1",
+      "projectId": "design-agent",
+      "name": "核心功能实现",
+      "category": "功能完善",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "完成设计代理项目的核心功能开发并实现基本的交互流程",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-design-agent-2",
+      "projectId": "design-agent",
+      "name": "代码质量与测试",
+      "category": "质量保障",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "代码通过代码审查，单元测试覆盖率达到80%以上",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-design-agent-3",
+      "projectId": "design-agent",
+      "name": "系统部署与监控",
+      "category": "运维稳定",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "设计代理系统在测试环境中部署成功，监控系统正常运行",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-design-agent-4",
+      "projectId": "design-agent",
+      "name": "用户反馈收集",
+      "category": "用户验证",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "收集并分析至少5位目标用户对MVP版本的反馈",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-design-agent-5",
+      "projectId": "design-agent",
+      "name": "文档编写与更新",
+      "category": "文档规范",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "完成项目文档的编写，包括用户手册和开发者指南",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-web-pilot-1",
+      "projectId": "web-pilot",
+      "name": "增强功能",
+      "category": "功能完善",
+      "fromStage": "试运行(MVP)",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "实现至少三项用户反馈的功能改进",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-web-pilot-2",
+      "projectId": "web-pilot",
+      "name": "性能优化",
+      "category": "质量保障",
+      "fromStage": "试运行(MVP)",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "系统响应时间提升20%以上",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-web-pilot-3",
+      "projectId": "web-pilot",
+      "name": "稳定性提升",
+      "category": "运维稳定",
+      "fromStage": "试运行(MVP)",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "系统可用性达到99.9%",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-web-pilot-4",
+      "projectId": "web-pilot",
+      "name": "用户增长",
+      "category": "用户验证",
+      "fromStage": "试运行(MVP)",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "用户量增长至少30%",
+      "issue": "",
+      "dueDate": ""
+    },
+    {
+      "id": "cond-web-pilot-5",
+      "projectId": "web-pilot",
+      "name": "文档完善",
+      "category": "文档规范",
+      "fromStage": "试运行(MVP)",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "完成所有功能的用户手册和开发者文档",
+      "issue": "",
+      "dueDate": ""
     }
   ],
   "tasks": [
     {
       "id": "consumer-insight-v2-issue-2",
       "projectId": "consumer-insight-v2",
-      "conditionId": "",
+      "conditionId": "consumer-insight-v2-c04",
       "title": "待做：launchd 自启 + cloudflared 迁移 + 抖音交互式登录",
       "type": "feature",
       "status": "pending",
@@ -797,7 +992,7 @@
     {
       "id": "consumer-insight-v2-issue-1",
       "projectId": "consumer-insight-v2",
-      "conditionId": "",
+      "conditionId": "consumer-insight-v2-c02",
       "title": "v5.0.0 多账号管理 + 抖音双平台 (Phase 1-6) ✅",
       "type": "feature",
       "status": "done",
@@ -807,7 +1002,7 @@
     {
       "id": "strategy-chat-issue-110",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -817,7 +1012,7 @@
     {
       "id": "strategy-chat-issue-109",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -827,7 +1022,7 @@
     {
       "id": "strategy-chat-issue-107",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -837,7 +1032,7 @@
     {
       "id": "strategy-chat-issue-105",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -847,7 +1042,7 @@
     {
       "id": "strategy-chat-issue-104",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -877,7 +1072,7 @@
     {
       "id": "strategy-chat-issue-98",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c03",
       "title": "添加用户设置模块",
       "type": "feature",
       "status": "active",
@@ -917,7 +1112,7 @@
     {
       "id": "strategy-chat-issue-82",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "针对chat聊天框中的各类附件/文档/链接的专项优化",
       "type": "feature",
       "status": "pending",
@@ -937,7 +1132,7 @@
     {
       "id": "strategy-chat-issue-80",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "扩大单个上传附件大小限制",
       "type": "feature",
       "status": "active",
@@ -977,7 +1172,7 @@
     {
       "id": "strategy-chat-issue-74",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c05",
       "title": "Strategy Chat: 以skill形式扩展应用的飞书文档权限",
       "type": "feature",
       "status": "pending",
@@ -1037,7 +1232,7 @@
     {
       "id": "strategy-chat-issue-66",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "End to end workflow",
       "type": "feature",
       "status": "pending",
@@ -1159,7 +1354,7 @@
       "projectId": "strategy-chat",
       "conditionId": "",
       "title": "Bug: SQLAlchemy concurrent operations and illegal state changes (InvalidRequestError/IllegalStateChangeError)",
-      "type": "feature",
+      "type": "bug",
       "status": "done",
       "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/35"
@@ -1179,7 +1374,7 @@
       "projectId": "strategy-chat",
       "conditionId": "",
       "title": "Bug: TypeError 'ClientResponse' object is not subscriptable during 429 error handling",
-      "type": "feature",
+      "type": "bug",
       "status": "pending",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/33"
@@ -1199,7 +1394,7 @@
       "projectId": "strategy-chat",
       "conditionId": "",
       "title": "Fix: RemoteProtocolError (Server disconnected) in attachment_service",
-      "type": "feature",
+      "type": "bug",
       "status": "done",
       "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/31"
@@ -1207,7 +1402,7 @@
     {
       "id": "draft-audit-issue-3",
       "projectId": "draft-audit",
-      "conditionId": "",
+      "conditionId": "draft-audit-c01",
       "title": "Introduce brief version - draft audit",
       "type": "feature",
       "status": "active",
@@ -1217,7 +1412,7 @@
     {
       "id": "draft-audit-issue-1",
       "projectId": "draft-audit",
-      "conditionId": "",
+      "conditionId": "draft-audit-c02",
       "title": "Apply Tech Assistant into draft audit",
       "type": "feature",
       "status": "active",
@@ -1227,7 +1422,7 @@
     {
       "id": "yuntu-datapicker-issue-13",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c03",
       "title": "乐高周报取数模块",
       "type": "feature",
       "status": "active",
@@ -1237,7 +1432,7 @@
     {
       "id": "yuntu-datapicker-issue-9",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c01",
       "title": "前端各模块支持单选功能",
       "type": "feature",
       "status": "done",
@@ -1247,7 +1442,7 @@
     {
       "id": "yuntu-datapicker-issue-7",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c01",
       "title": "本竞品投放表现&达人矩阵--取数和后处理",
       "type": "feature",
       "status": "done",
@@ -1257,7 +1452,7 @@
     {
       "id": "yuntu-datapicker-issue-4",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c01",
       "title": "品牌心智、行业搜索洞察、触点能效--数据后处理",
       "type": "feature",
       "status": "done",
@@ -1267,7 +1462,7 @@
     {
       "id": "yuntu-datapicker-issue-2",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c02",
       "title": "onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1277,7 +1472,7 @@
     {
       "id": "yuntu-datapicker-issue-1",
       "projectId": "yuntu-datapicker",
-      "conditionId": "",
+      "conditionId": "yuntu-datapicker-c04",
       "title": "setup CI/CD",
       "type": "feature",
       "status": "done",
@@ -1285,9 +1480,19 @@
       "url": "https://github.com/goodidea-ggn/yuntu-datapicker/issues/1"
     },
     {
+      "id": "ai-captain-dashboard-issue-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-3",
+      "title": "test milestone link",
+      "type": "feature",
+      "status": "done",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
+    },
+    {
       "id": "xingtu-selector-issue-12",
       "projectId": "xingtu-selector",
-      "conditionId": "",
+      "conditionId": "xingtu-selector-c03",
       "title": "星图项目登录 Bug：第一次登录失败，第二次点击直接显示已登录",
       "type": "feature",
       "status": "pending",
@@ -1297,7 +1502,7 @@
     {
       "id": "xingtu-selector-issue-7",
       "projectId": "xingtu-selector",
-      "conditionId": "",
+      "conditionId": "xingtu-selector-c04",
       "title": "setup CI/CD and onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1307,7 +1512,7 @@
     {
       "id": "xingtu-selector-issue-6",
       "projectId": "xingtu-selector",
-      "conditionId": "",
+      "conditionId": "xingtu-selector-c01",
       "title": "筛选MCN的刊例",
       "type": "feature",
       "status": "pending",
@@ -1317,7 +1522,7 @@
     {
       "id": "xingtu-selector-issue-3",
       "projectId": "xingtu-selector",
-      "conditionId": "",
+      "conditionId": "xingtu-selector-c01",
       "title": "Project build script and scaffold init",
       "type": "feature",
       "status": "done",
@@ -1327,7 +1532,7 @@
     {
       "id": "xingtu-selector-issue-1",
       "projectId": "xingtu-selector",
-      "conditionId": "",
+      "conditionId": "xingtu-selector-c02",
       "title": "Apply Tech Assistant into xingtu selector",
       "type": "feature",
       "status": "done",
@@ -1337,7 +1542,7 @@
     {
       "id": "ggn-workspace-issue-20",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c04",
       "title": "move frontend into backend repo",
       "type": "feature",
       "status": "done",
@@ -1347,7 +1552,7 @@
     {
       "id": "ggn-workspace-issue-18",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c04",
       "title": "setup CI/CD",
       "type": "feature",
       "status": "done",
@@ -1357,7 +1562,7 @@
     {
       "id": "ggn-workspace-issue-17",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c02",
       "title": "onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1367,7 +1572,7 @@
     {
       "id": "ggn-workspace-issue-13",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c03",
       "title": "User feedback on backend",
       "type": "feature",
       "status": "active",
@@ -1377,7 +1582,7 @@
     {
       "id": "ggn-workspace-issue-6",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "PPT template upload and list API",
       "type": "feature",
       "status": "active",
@@ -1387,7 +1592,7 @@
     {
       "id": "ggn-workspace-issue-5",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "PPT template generate page",
       "type": "feature",
       "status": "active",
@@ -1397,7 +1602,7 @@
     {
       "id": "ggn-workspace-issue-4",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "Creative workshop Implementation",
       "type": "feature",
       "status": "active",
@@ -1407,7 +1612,7 @@
     {
       "id": "ggn-workspace-issue-3",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "VI logo upload and main color extract API",
       "type": "feature",
       "status": "active",
@@ -1417,7 +1622,7 @@
     {
       "id": "ggn-workspace-issue-2",
       "projectId": "ggn-workspace",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "Core Product image upload API",
       "type": "feature",
       "status": "active",
@@ -1427,7 +1632,7 @@
     {
       "id": "ggn-workspace-frontend-issue-19",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "Apply Tech Assistant into ggn workspace",
       "type": "feature",
       "status": "pending",
@@ -1437,7 +1642,7 @@
     {
       "id": "ggn-workspace-frontend-issue-17",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c03",
       "title": "PPT template page enhancement base on feedback",
       "type": "feature",
       "status": "active",
@@ -1447,7 +1652,7 @@
     {
       "id": "ggn-workspace-frontend-issue-15",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c03",
       "title": "User feedback on UI experience",
       "type": "feature",
       "status": "active",
@@ -1467,7 +1672,7 @@
     {
       "id": "ggn-workspace-frontend-issue-5",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "PPT template generate page",
       "type": "feature",
       "status": "active",
@@ -1477,7 +1682,7 @@
     {
       "id": "ggn-workspace-frontend-issue-4",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c02",
       "title": "Creative workshop Implementation",
       "type": "feature",
       "status": "active",
@@ -1507,7 +1712,7 @@
     {
       "id": "tech-assistant-issue-6",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": "tech-assistant-c03",
       "title": "[tech-assistant] 建立系统监控机制：各产品用户活跃度统计",
       "type": "feature",
       "status": "pending",
@@ -1517,7 +1722,7 @@
     {
       "id": "tech-assistant-issue-5",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": "tech-assistant-c04",
       "title": "引入 RAG 定期评判机制",
       "type": "feature",
       "status": "pending",
@@ -1527,7 +1732,7 @@
     {
       "id": "tech-assistant-issue-4",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": "tech-assistant-c03",
       "title": "引入应用使用情况监控机制",
       "type": "feature",
       "status": "pending",
@@ -1537,7 +1742,7 @@
     {
       "id": "tech-assistant-issue-3",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": "tech-assistant-c01",
       "title": "research on DeepWiki-open and try integrate with it",
       "type": "feature",
       "status": "pending",
@@ -1547,7 +1752,7 @@
     {
       "id": "tech-assistant-issue-2",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": null,
       "title": "Bug: Connection interrupted issue",
       "type": "feature",
       "status": "done",
@@ -1557,7 +1762,7 @@
     {
       "id": "tech-assistant-issue-1",
       "projectId": "tech-assistant",
-      "conditionId": "",
+      "conditionId": null,
       "title": "Bug: Excessive 429 errors with Gemini 3.1",
       "type": "feature",
       "status": "done",

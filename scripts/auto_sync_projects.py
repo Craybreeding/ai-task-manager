@@ -29,10 +29,18 @@ DATA_FILE = ROOT / "public" / "data.json"
 
 ORG = "goodidea-ggn"
 
-# 手动覆盖: 只覆盖显示名称，captain 从 GitHub contributors 自动检测
+# 手动覆盖: 支持 name/stage/captain/sponsor/currentFocus/blocker 等字段
+# stage 覆盖会强制生效，忽略自动检测和历史值
 MANUAL_OVERRIDES: dict[str, dict] = {
     "consumer-insight-v2": {"name": "Consumer Insight v2"},
     "consumer-insights": {"name": "Consumer Insights"},
+    "ai-captain-dashboard": {
+        "name": "AI Captain Dashboard",
+        "stage": "试运行(MVP)",
+        "captain": "ggn",
+        "sponsor": "ggn",
+        "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
+    },
 }
 
 # GitHub login → 显示名映射（不需要映射的就不写，原样显示）
@@ -54,6 +62,7 @@ EMOJI_MAP = {
     "design-agent": "\U0001f3a8",
     "web-pilot": "\U0001f310",
     "openclaw-skillhub": "\U0001f4e6",
+    "ai-captain-dashboard": "\U0001f680",
 }
 
 # 排除的 repo（不算项目）
@@ -100,12 +109,26 @@ def fetch_readme(repo_name: str) -> str:
         return ""
 
 
+def fetch_milestones(repo_name: str) -> list[dict]:
+    """读取 GitHub Milestones（含 open + closed）"""
+    try:
+        raw = run_gh([
+            "api", f"repos/{ORG}/{repo_name}/milestones",
+            "--method", "GET",
+            "-f", "state=all",
+            "-f", "per_page=50",
+        ])
+        return json.loads(raw)
+    except subprocess.CalledProcessError:
+        return []
+
+
 def fetch_issues(repo_name: str) -> list[dict]:
     try:
         raw = run_gh([
             "issue", "list", "--repo", f"{ORG}/{repo_name}",
             "--state", "all",
-            "--json", "number,title,state,assignees,url,labels",
+            "--json", "number,title,state,assignees,url,labels,milestone",
             "--limit", "200",
         ])
         return json.loads(raw)
@@ -259,6 +282,63 @@ def detect_captain(issues: list, repo_name: str) -> str:
     return "待确认"
 
 
+# Milestone description 里用标签标注 category 和 criteria
+# 格式: "category: 功能完善\ncriteria: xxx\nfromStage: 验证中\ntoStage: 试运行(MVP)"
+MILESTONE_CATEGORIES = {"功能完善", "质量保障", "运维稳定", "用户验证", "文档规范"}
+
+
+def milestones_to_conditions(milestones: list[dict], project_id: str, stage: str, target_stage: str) -> list[dict]:
+    """把 GitHub Milestones 转成 data.json 的 conditions 格式"""
+    conditions = []
+    for ms in milestones:
+        ms_number = ms.get("number", 0)
+        title = ms.get("title", "")
+        desc = ms.get("description") or ""
+        state = ms.get("state", "open")
+        due = ms.get("due_on", "") or ""
+
+        # 从 description 解析结构化字段
+        meta = {}
+        for line in desc.split("\n"):
+            line = line.strip()
+            if ":" in line:
+                key, val = line.split(":", 1)
+                meta[key.strip().lower()] = val.strip()
+
+        category = meta.get("category", "功能完善")
+        if category not in MILESTONE_CATEGORIES:
+            category = "功能完善"
+        criteria = meta.get("criteria", desc.split("\n")[0] if desc else "")
+        from_stage = meta.get("fromstage", stage)
+        to_stage = meta.get("tostage", target_stage)
+
+        # milestone state → condition status
+        if state == "closed":
+            cond_status = "done"
+        else:
+            open_count = ms.get("open_issues", 0)
+            closed_count = ms.get("closed_issues", 0)
+            if closed_count > 0 and open_count > 0:
+                cond_status = "active"
+            else:
+                cond_status = "pending"
+
+        conditions.append({
+            "id": f"ms-{project_id}-{ms_number}",
+            "projectId": project_id,
+            "name": title,
+            "category": category,
+            "fromStage": from_stage,
+            "toStage": to_stage,
+            "status": cond_status,
+            "owner": "",  # 从 issues assignees 推断
+            "criteria": criteria,
+            "issue": "",
+            "dueDate": due[:10] if due else "",
+        })
+    return conditions
+
+
 def fetch_contributors(repo_name: str) -> list[str]:
     """获取 repo 贡献者列表（按贡献量排序）"""
     try:
@@ -328,14 +408,325 @@ def llm_match_tasks_to_conditions(
     return {}
 
 
+def llm_generate_conditions(
+    project: dict, readme: str, issues: list, existing_tasks: list
+) -> tuple[list[dict], list[dict]]:
+    """
+    用 LLM 为缺少升级路径的项目自动生成 conditions (线) 和 tasks (点)。
+    分析项目的 README、issues、当前阶段，生成从 stage → targetStage 的升级条件。
+    返回 (conditions, tasks)
+    """
+    project_id = project["id"]
+    stage = project["stage"]
+    target = project["targetStage"]
+    name = project["name"]
+    captain = project.get("captain", "待确认")
+
+    api_key = os.environ.get("MOONSHOT_API_KEY", "sk-Rxy3KtPy16zcpZ1CxQbgZsncjVA9fx64JSOcZ8Cld7CuUWRn")
+
+    readme_short = readme[:800] if readme else "(no README)"
+    issues_str = "\n".join(
+        f"  - #{i.get('number','')}: {i.get('title','')} [{i.get('state','OPEN')}]"
+        for i in issues[:20]
+    ) or "(no issues)"
+
+    existing_task_str = "\n".join(
+        f"  - {t['title']} [{t['status']}]" for t in existing_tasks[:20]
+    ) or "(no existing tasks)"
+
+    prompt = f"""你是一个 AI 项目管理专家。请为以下项目生成从 "{stage}" 升级到 "{target}" 的升级路径。
+
+项目: {name} (id: {project_id})
+负责人: {captain}
+当前阶段: {stage}
+目标阶段: {target}
+
+README:
+{readme_short}
+
+GitHub Issues:
+{issues_str}
+
+已有任务:
+{existing_task_str}
+
+请生成 3-6 个升级条件 (conditions)，每个条件下 1-3 个具体任务 (tasks)。
+
+条件类别 (category) 只能是以下之一: 功能完善, 质量保障, 运维稳定, 用户验证, 文档规范
+
+返回格式 (严格 JSON):
+{{
+  "conditions": [
+    {{
+      "name": "条件名称（简短）",
+      "category": "功能完善",
+      "criteria": "具体达标标准，一句话",
+      "status": "pending",
+      "tasks": [
+        {{
+          "title": "具体任务描述",
+          "type": "feature/bug/ops/doc"
+        }}
+      ]
+    }}
+  ]
+}}
+
+规则:
+- 根据项目实际情况生成，不要泛泛而谈
+- 如果有 GitHub issues，优先把相关 issue 归入对应条件
+- 条件应该是从当前阶段到目标阶段的关键里程碑
+- 每个条件有清晰的验收标准 (criteria)
+- 只返回 JSON，不要其他文字"""
+
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            "https://api.moonshot.cn/v1/chat/completions",
+            data=json.dumps({
+                "model": "moonshot-v1-32k",
+                "temperature": 0.4,
+                "max_tokens": 4096,
+                "messages": [{"role": "user", "content": prompt}],
+            }).encode(),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            body = json.loads(resp.read())
+            text = body["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', text, re.DOTALL)
+            if not match:
+                print(f"    ⚠ LLM returned no JSON for {project_id}")
+                return [], []
+            result = json.loads(match.group())
+
+        conditions = []
+        tasks = []
+        for idx, cond in enumerate(result.get("conditions", []), 1):
+            cond_id = f"cond-{project_id}-{idx}"
+            conditions.append({
+                "id": cond_id,
+                "projectId": project_id,
+                "name": cond["name"],
+                "category": cond.get("category", "功能完善"),
+                "fromStage": stage,
+                "toStage": target,
+                "status": cond.get("status", "pending"),
+                "owner": captain,
+                "criteria": cond.get("criteria", ""),
+                "issue": "",
+                "dueDate": "",
+            })
+            for tidx, task in enumerate(cond.get("tasks", []), 1):
+                tasks.append({
+                    "id": f"task-{project_id}-{idx}-{tidx}",
+                    "projectId": project_id,
+                    "conditionId": cond_id,
+                    "title": task["title"],
+                    "type": task.get("type", "feature"),
+                    "status": "pending",
+                    "assignee": captain,
+                    "url": "",
+                })
+        return conditions, tasks
+
+    except Exception as e:
+        print(f"    ⚠ Condition generation failed for {project_id}: {e}")
+        return [], []
+
+
+def bootstrap_github_project(repo_name: str, stage: str, target_stage: str, captain: str = "") -> bool:
+    """
+    用 LLM 分析项目，然后直接在 GitHub 上创建 Milestones + Issues。
+    之后正常 sync 就能自动读到这些数据。这是 GitHub-first 的做法。
+    """
+    print(f"\n🚀 Bootstrapping {repo_name} ({stage} → {target_stage})")
+
+    # 1. 收集项目信息
+    readme = fetch_readme(repo_name)
+    issues = fetch_issues(repo_name)
+    commits = fetch_recent_commits(repo_name, 10)
+    existing_milestones = fetch_milestones(repo_name)
+
+    if existing_milestones:
+        print(f"  ⚠ Already has {len(existing_milestones)} milestones, skipping bootstrap")
+        return False
+
+    readme_short = readme[:1200] if readme else "(no README)"
+    issues_str = "\n".join(
+        f"  - #{i.get('number','')}: {i.get('title','')} [{i.get('state','OPEN')}]"
+        for i in issues[:20]
+    ) or "(no issues)"
+    commits_str = "\n".join(f"  - {c}" for c in commits[:10]) or "(no commits)"
+
+    # 2. 调 LLM 生成 milestones + issues
+    api_key = os.environ.get("MOONSHOT_API_KEY", "sk-Rxy3KtPy16zcpZ1CxQbgZsncjVA9fx64JSOcZ8Cld7CuUWRn")
+
+    prompt = f"""你是一个 AI 项目管理专家。请为以下项目规划从 "{stage}" 升级到 "{target_stage}" 的路线图。
+
+项目: {repo_name}
+当前阶段: {stage}
+目标阶段: {target_stage}
+
+README:
+{readme_short}
+
+最近 commits:
+{commits_str}
+
+现有 GitHub Issues:
+{issues_str}
+
+请生成 3-5 个 GitHub Milestones（升级里程碑），每个 Milestone 下 2-4 个具体 Issue（任务）。
+
+要求:
+- Milestone 名称简短有力（如 "核心功能闭环"、"监控告警上线"、"用户反馈收集"）
+- 每个 Milestone 的 description 必须包含：
+  category: <功能完善|质量保障|运维稳定|用户验证|文档规范>
+  criteria: <一句话验收标准>
+- Issue 标题要具体、可执行（如 "接入 Sentry 错误监控" 而不是 "添加监控"）
+- Issue 必须有 labels 数组（从 feature/bug/ops/doc 中选）
+- 根据项目实际内容生成，不要泛泛而谈
+- 如果已有 open issues，把它们归到合适的 milestone（通过 existing_issue_number 字段）
+
+返回格式 (严格 JSON):
+{{
+  "milestones": [
+    {{
+      "title": "里程碑名称",
+      "description": "category: 功能完善\\ncriteria: 验收标准描述",
+      "issues": [
+        {{
+          "title": "具体任务描述",
+          "body": "任务详情和背景",
+          "labels": ["feature"],
+          "existing_issue_number": null
+        }}
+      ]
+    }}
+  ]
+}}
+
+只返回 JSON。"""
+
+    try:
+        import urllib.request
+        req = urllib.request.Request(
+            "https://api.moonshot.cn/v1/chat/completions",
+            data=json.dumps({
+                "model": "moonshot-v1-32k",
+                "temperature": 0.4,
+                "max_tokens": 4096,
+                "messages": [{"role": "user", "content": prompt}],
+            }).encode(),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {api_key}",
+            },
+        )
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            body = json.loads(resp.read())
+            text = body["choices"][0]["message"]["content"]
+            match = re.search(r'\{.*\}', text, re.DOTALL)
+            if not match:
+                print(f"  ⚠ LLM returned no JSON")
+                return False
+            result = json.loads(match.group())
+    except Exception as e:
+        print(f"  ⚠ LLM call failed: {e}")
+        return False
+
+    # 3. 创建 GitHub Milestones + Issues
+    repo_full = f"{ORG}/{repo_name}"
+    created_ms = 0
+    created_issues = 0
+
+    for ms_data in result.get("milestones", []):
+        ms_title = ms_data["title"]
+        ms_desc = ms_data.get("description", "")
+
+        # 创建 Milestone
+        try:
+            ms_json = run_gh([
+                "api", f"repos/{repo_full}/milestones",
+                "--method", "POST",
+                "-f", f"title={ms_title}",
+                "-f", f"description={ms_desc}",
+                "-f", "state=open",
+            ])
+            ms_result = json.loads(ms_json)
+            ms_number = ms_result["number"]
+            created_ms += 1
+            print(f"  ✅ Milestone #{ms_number}: {ms_title}")
+        except Exception as e:
+            print(f"  ⚠ Failed to create milestone '{ms_title}': {e}")
+            continue
+
+        # 创建 Issues 并关联到 Milestone (用 milestone 名称，不是 number)
+        for issue_data in ms_data.get("issues", []):
+            existing_num = issue_data.get("existing_issue_number")
+
+            if existing_num:
+                # 更新已有 issue 的 milestone
+                try:
+                    run_gh([
+                        "api", f"repos/{repo_full}/issues/{existing_num}",
+                        "--method", "PATCH",
+                        "-f", f"milestone={ms_number}",
+                    ])
+                    print(f"    🔗 Linked existing #{existing_num} → Milestone #{ms_number}")
+                except Exception as e:
+                    print(f"    ⚠ Failed to link #{existing_num}: {e}")
+            else:
+                title = issue_data["title"]
+                body = issue_data.get("body", "")
+                labels = issue_data.get("labels", ["feature"])
+
+                # gh issue create --milestone 接受名称，不是 number
+                try:
+                    gh_args = [
+                        "issue", "create",
+                        "--repo", repo_full,
+                        "--title", title,
+                        "--body", body,
+                        "--milestone", ms_title,
+                    ]
+                    for label in labels:
+                        gh_args.extend(["--label", label])
+                    run_gh(gh_args)
+                    created_issues += 1
+                    print(f"    ✅ Issue: {title}")
+                except subprocess.CalledProcessError:
+                    # label 可能不存在，不带 label 重试
+                    try:
+                        run_gh([
+                            "issue", "create",
+                            "--repo", repo_full,
+                            "--title", title,
+                            "--body", body,
+                            "--milestone", ms_title,
+                        ])
+                        created_issues += 1
+                        print(f"    ✅ Issue: {title} (no labels)")
+                    except Exception as e2:
+                        print(f"    ⚠ Failed to create issue '{title}': {e2}")
+
+    print(f"\n  📊 Created {created_ms} milestones, {created_issues} issues for {repo_name}")
+    return created_ms > 0
+
+
 def issues_to_tasks(issues: list, project_id: str, task_cond_map: dict[str, str] | None = None) -> list[dict]:
-    """把 GitHub issues 转成 data.json 的 tasks 格式"""
+    """把 GitHub issues 转成 data.json 的 tasks 格式。
+    自动从 issue.milestone 关联到 condition (ms-{projectId}-{milestone_number})。
+    """
     if task_cond_map is None:
         task_cond_map = {}
     tasks = []
     for issue in issues:
         assignees = [a.get("login", "") for a in issue.get("assignees", [])]
-        # 显示名映射
         display_assignees = [DISPLAY_NAMES.get(a, a) for a in assignees]
         state = issue.get("state", "OPEN")
         status = "done" if state == "CLOSED" else "active"
@@ -346,13 +737,34 @@ def issues_to_tasks(issues: list, project_id: str, task_cond_map: dict[str, str]
         elif state == "OPEN" and not assignees:
             status = "pending"
 
+        # 从 issue.milestone 自动关联 conditionId
         task_id = f"{project_id}-issue-{issue['number']}"
+        milestone = issue.get("milestone") or {}
+        ms_number = milestone.get("number") if isinstance(milestone, dict) else None
+        if ms_number:
+            cond_id = f"ms-{project_id}-{ms_number}"
+        else:
+            cond_id = task_cond_map.get(task_id, "")
+
+        # 从 labels 推断 type
+        task_type = "feature"
+        for label in labels:
+            if label in ("bug", "fix"):
+                task_type = "bug"
+                break
+            elif label in ("ops", "infra", "devops"):
+                task_type = "ops"
+                break
+            elif label in ("doc", "docs", "documentation"):
+                task_type = "doc"
+                break
+
         tasks.append({
             "id": task_id,
             "projectId": project_id,
-            "conditionId": task_cond_map.get(task_id, ""),
+            "conditionId": cond_id,
             "title": issue.get("title", ""),
-            "type": "feature",
+            "type": task_type,
             "status": status,
             "assignee": ", ".join(display_assignees) or "待确认",
             "url": issue.get("url", ""),
@@ -360,7 +772,7 @@ def issues_to_tasks(issues: list, project_id: str, task_cond_map: dict[str, str]
     return tasks
 
 
-def sync_projects(with_issues: bool = False, use_llm: bool = False) -> dict:
+def sync_projects(with_issues: bool = False, use_llm: bool = False, gen_conditions: bool = False) -> dict:
     """主同步逻辑，返回完整 data.json 结构"""
     # 加载现有 data
     existing = {}
@@ -389,6 +801,7 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False) -> dict:
         releases = fetch_releases(name)
         readme = fetch_readme(name)
         issues = fetch_issues(name) if with_issues else []
+        milestones = fetch_milestones(name) if with_issues else []
 
         stage, is_certain = detect_stage(repo, releases, readme)
         op_status = detect_op_status(repo)
@@ -418,18 +831,24 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False) -> dict:
 
         prev = existing_projects.get(project_id, {})
 
+        # override 里的 stage 强制生效，否则保留历史值或用自动检测
+        final_stage = override.get("stage") or prev.get("stage") or stage
+        final_captain = override.get("captain") or captain
+
         project = {
             "id": project_id,
             "name": display_name,
-            "stage": prev.get("stage") or stage,
-            "targetStage": prev.get("targetStage") or _next_stage(stage),
+            "stage": final_stage,
+            "targetStage": override.get("targetStage") or (
+                _next_stage(final_stage) if "stage" in override else prev.get("targetStage") or _next_stage(final_stage)
+            ),
             "operationStatus": op_status,
             "status": status,
             "sponsor": override.get("sponsor") or prev.get("sponsor") or "待确认",
-            "captain": captain,
-            "blocker": prev.get("blocker", "待确认"),
-            "currentFocus": prev.get("currentFocus", "待确认"),
-            "nextCheckpoint": prev.get("nextCheckpoint", "待确认"),
+            "captain": final_captain,
+            "blocker": override.get("blocker") or prev.get("blocker", "待确认"),
+            "currentFocus": override.get("currentFocus") or prev.get("currentFocus", "待确认"),
+            "nextCheckpoint": override.get("nextCheckpoint") or prev.get("nextCheckpoint", "待确认"),
             "latestFeedback": prev.get("latestFeedback", ""),
             "feedbackFrom": prev.get("feedbackFrom", ""),
             "wau": prev.get("wau", 0),
@@ -440,20 +859,30 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False) -> dict:
         cert = "✓" if is_certain else "?"
         print(f"→ {stage} [{cert}] | {op_status} | captain={captain}")
 
-        if with_issues and issues:
-            # 先创建不带 conditionId 的 tasks
-            raw_tasks = issues_to_tasks(issues, project_id)
-            # LLM 匹配 tasks → conditions
-            proj_conditions = [c for c in existing_conditions if c["projectId"] == project_id]
-            if proj_conditions and use_llm:
-                print(f"    🔗 Matching {len(raw_tasks)} tasks to {len(proj_conditions)} conditions...")
-                task_cond_map = llm_match_tasks_to_conditions(project_id, proj_conditions, raw_tasks)
-                if task_cond_map:
-                    # 重新创建带 conditionId 的 tasks
-                    raw_tasks = issues_to_tasks(issues, project_id, task_cond_map)
-                    matched = sum(1 for t in raw_tasks if t.get("conditionId"))
-                    print(f"    ✅ Matched {matched}/{len(raw_tasks)} tasks")
-            all_tasks.extend(raw_tasks)
+        if with_issues:
+            # Milestones → Conditions (GitHub 是唯一数据源)
+            if milestones:
+                ms_conditions = milestones_to_conditions(milestones, project_id, final_stage, project["targetStage"])
+                # 替换该项目的旧条件
+                existing_conditions = [c for c in existing_conditions if c["projectId"] != project_id]
+                existing_conditions.extend(ms_conditions)
+                if ms_conditions:
+                    print(f"    📌 {len(ms_conditions)} milestones → conditions")
+
+            # Issues → Tasks (milestone 关联自动通过 issue.milestone 字段)
+            if issues:
+                raw_tasks = issues_to_tasks(issues, project_id)
+                # 如果没有 milestone 关联，用 LLM 匹配到 existing conditions
+                unlinked = [t for t in raw_tasks if not t.get("conditionId")]
+                proj_conditions = [c for c in existing_conditions if c["projectId"] == project_id]
+                if unlinked and proj_conditions and use_llm:
+                    print(f"    🔗 Matching {len(unlinked)}/{len(raw_tasks)} unlinked tasks to {len(proj_conditions)} conditions...")
+                    task_cond_map = llm_match_tasks_to_conditions(project_id, proj_conditions, unlinked)
+                    if task_cond_map:
+                        raw_tasks = issues_to_tasks(issues, project_id, task_cond_map)
+                        matched = sum(1 for t in raw_tasks if t.get("conditionId"))
+                        print(f"    ✅ Matched {matched}/{len(raw_tasks)} tasks")
+                all_tasks.extend(raw_tasks)
 
     # Pass 2: LLM 精修不确定的项目
     if uncertain and use_llm:
@@ -476,6 +905,36 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False) -> dict:
                     else:
                         print(f"    {repo_id}: kept {p['stage']} (low confidence={confidence})")
             print(f"  ✅ LLM refinement done")
+
+    # Pass 3: 为缺少条件的活跃项目自动生成升级路径
+    if gen_conditions:
+        proj_map = {p["id"]: p for p in projects}
+        projects_with_conditions = {c["projectId"] for c in existing_conditions}
+        active_without = [
+            p for p in projects
+            if p["operationStatus"] == "进行中"
+            and p["id"] not in projects_with_conditions
+            and p["stage"] != "正式上线(PROD)"  # PROD 不需要升级条件
+        ]
+        if active_without:
+            print(f"\n  🧠 Generating conditions for {len(active_without)} projects...")
+            for p in active_without:
+                print(f"    📋 {p['name']} ({p['stage']} → {p['targetStage']})...")
+                readme = fetch_readme(p["id"].replace("-", "_"))
+                if not readme:
+                    readme = fetch_readme(p["id"])
+                issues = fetch_issues(p["id"].replace("-", "_")) if with_issues else []
+                if not issues:
+                    issues = fetch_issues(p["id"])
+                proj_tasks = [t for t in all_tasks if t["projectId"] == p["id"]]
+                new_conds, new_tasks = llm_generate_conditions(p, readme, issues, proj_tasks)
+                if new_conds:
+                    existing_conditions.extend(new_conds)
+                    all_tasks.extend(new_tasks)
+                    print(f"    ✅ Generated {len(new_conds)} conditions, {len(new_tasks)} tasks")
+                else:
+                    print(f"    ⚠ No conditions generated")
+            print(f"  ✅ Condition generation done")
 
     # 按 operationStatus 排序: 进行中 > 待启动 > 已暂停 > 已废弃
     op_order = {"进行中": 0, "待启动": 1, "已暂停": 2, "已废弃": 3}
@@ -506,9 +965,52 @@ def main():
     parser.add_argument("--write", action="store_true", help="写入 data.json（默认 dry-run）")
     parser.add_argument("--with-issues", action="store_true", help="同时同步 issues 为 tasks")
     parser.add_argument("--llm", action="store_true", help="用 LLM 精修不确定的阶段判断")
+    parser.add_argument("--gen-conditions", action="store_true", help="用 LLM 为缺少条件的项目自动生成升级路径（仅写 data.json）")
+    parser.add_argument("--bootstrap", nargs="*", metavar="REPO",
+                        help="用 LLM 分析项目并在 GitHub 上创建 Milestones + Issues。"
+                             "不指定 repo 则处理所有缺 milestone 的活跃项目")
     args = parser.parse_args()
 
-    data = sync_projects(with_issues=args.with_issues, use_llm=args.llm)
+    # --bootstrap 模式: LLM → GitHub Milestones + Issues
+    if args.bootstrap is not None:
+        # 先加载现有数据获取 stage 信息
+        existing = json.loads(DATA_FILE.read_text()) if DATA_FILE.exists() else {}
+        proj_map = {p["id"]: p for p in existing.get("projects", [])}
+
+        if args.bootstrap:
+            # 指定了具体 repo
+            target_repos = args.bootstrap
+        else:
+            # 自动检测: 所有活跃、非 PROD、无 milestone 的项目
+            repos = fetch_repos()
+            target_repos = []
+            for repo in repos:
+                name = repo["name"]
+                if name in EXCLUDE_REPOS:
+                    continue
+                pid = name.replace("_", "-")
+                p = proj_map.get(pid, {})
+                if p.get("operationStatus") != "进行中":
+                    continue
+                if p.get("stage") == "正式上线(PROD)":
+                    continue
+                ms = fetch_milestones(name)
+                if not ms:
+                    target_repos.append(name)
+            print(f"Found {len(target_repos)} projects without milestones")
+
+        for repo_name in target_repos:
+            pid = repo_name.replace("_", "-")
+            p = proj_map.get(pid, {})
+            stage = p.get("stage", "验证中")
+            target = p.get("targetStage", _next_stage(stage))
+            captain = p.get("captain", "")
+            bootstrap_github_project(repo_name, stage, target, captain)
+
+        print("\n✅ Bootstrap done. Run --write --with-issues to sync into dashboard.")
+        return
+
+    data = sync_projects(with_issues=args.with_issues, use_llm=args.llm, gen_conditions=args.gen_conditions)
 
     print(f"\n{'='*50}")
     print(f"Projects: {len(data['projects'])}")
