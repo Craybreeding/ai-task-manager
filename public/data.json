@@ -1083,7 +1083,7 @@
     {
       "id": "strategy-chat-issue-99",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "References documents",
       "type": "feature",
       "status": "active",
@@ -1113,7 +1113,7 @@
     {
       "id": "strategy-chat-issue-94",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "New Chat名字不会刷新",
       "type": "feature",
       "status": "done",
@@ -1123,7 +1123,7 @@
     {
       "id": "strategy-chat-issue-84",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "新增本地账号密码登录用户有效期控制功能",
       "type": "feature",
       "status": "pending",
@@ -1203,7 +1203,7 @@
     {
       "id": "strategy-chat-issue-73",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "把embedding 模型切换到gemini embedding 2",
       "type": "feature",
       "status": "pending",
@@ -1213,7 +1213,7 @@
     {
       "id": "strategy-chat-issue-71",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "XHS strategy optimize",
       "type": "feature",
       "status": "pending",
@@ -1223,7 +1223,7 @@
     {
       "id": "strategy-chat-issue-70",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "[strategy-chat] 错误：'ClientResponse' object is not subscriptable",
       "type": "feature",
       "status": "pending",
@@ -1233,7 +1233,7 @@
     {
       "id": "strategy-chat-issue-69",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c03",
       "title": "[strategy-chat] 功能建议：增加飞书网页读取功能",
       "type": "feature",
       "status": "done",
@@ -1243,7 +1243,7 @@
     {
       "id": "strategy-chat-issue-68",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "[strategy-chat] 错误反馈 - 服务器开小差了: Request failed: 401",
       "type": "feature",
       "status": "done",
@@ -1263,7 +1263,7 @@
     {
       "id": "strategy-chat-issue-65",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "Logout when token refresh cannot be performed",
       "type": "feature",
       "status": "done",
@@ -1293,7 +1293,7 @@
     {
       "id": "strategy-chat-issue-54",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "Strategy Chat: 数据分析模块",
       "type": "feature",
       "status": "pending",
@@ -1303,7 +1303,7 @@
     {
       "id": "strategy-chat-issue-53",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "Strategy Chat: 创意",
       "type": "feature",
       "status": "pending",
@@ -1313,7 +1313,7 @@
     {
       "id": "strategy-chat-issue-50",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "优化analysis 对话框UI效果",
       "type": "feature",
       "status": "pending",
@@ -1323,7 +1323,7 @@
     {
       "id": "strategy-chat-issue-45",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "用户登陆重新成功登陆后，自动返回历史页面",
       "type": "feature",
       "status": "done",
@@ -1333,7 +1333,7 @@
     {
       "id": "strategy-chat-issue-44",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "优化用户登陆信息JWT超时策略",
       "type": "feature",
       "status": "done",
@@ -1343,7 +1343,7 @@
     {
       "id": "strategy-chat-issue-42",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "增加Anthropic模型sonnet供用户选择",
       "type": "feature",
       "status": "active",
@@ -1353,7 +1353,7 @@
     {
       "id": "strategy-chat-issue-41",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c05",
       "title": "用户反馈：模型 503 Service Unavailable 错误显示优化",
       "type": "feature",
       "status": "done",
@@ -1363,7 +1363,7 @@
     {
       "id": "strategy-chat-issue-38",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "Bug: Connection interrupted",
       "type": "feature",
       "status": "done",
@@ -1373,7 +1373,7 @@
     {
       "id": "strategy-chat-issue-35",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "Bug: SQLAlchemy concurrent operations and illegal state changes (InvalidRequestError/IllegalStateChangeError)",
       "type": "bug",
       "status": "done",
@@ -1393,7 +1393,7 @@
     {
       "id": "strategy-chat-issue-33",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "Bug: TypeError 'ClientResponse' object is not subscriptable during 429 error handling",
       "type": "bug",
       "status": "pending",
@@ -1403,7 +1403,7 @@
     {
       "id": "strategy-chat-issue-32",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "Feature: Optimize chat UI for table display",
       "type": "feature",
       "status": "pending",
@@ -1413,7 +1413,7 @@
     {
       "id": "strategy-chat-issue-31",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "Fix: RemoteProtocolError (Server disconnected) in attachment_service",
       "type": "bug",
       "status": "done",
@@ -1673,7 +1673,7 @@
     {
       "id": "ggn-workspace-frontend-issue-6",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "switch UI theme between light and dark",
       "type": "feature",
       "status": "active",
@@ -1703,7 +1703,7 @@
     {
       "id": "ggn-workspace-frontend-issue-3",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c02",
       "title": "Core Product image upload",
       "type": "feature",
       "status": "active",
@@ -1713,7 +1713,7 @@
     {
       "id": "ggn-workspace-frontend-issue-2",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c03",
       "title": "VI logo upload and main color extract",
       "type": "feature",
       "status": "active",
@@ -1763,7 +1763,7 @@
     {
       "id": "tech-assistant-issue-2",
       "projectId": "tech-assistant",
-      "conditionId": null,
+      "conditionId": "tech-assistant-c01",
       "title": "Bug: Connection interrupted issue",
       "type": "feature",
       "status": "done",
@@ -1773,7 +1773,7 @@
     {
       "id": "tech-assistant-issue-1",
       "projectId": "tech-assistant",
-      "conditionId": null,
+      "conditionId": "tech-assistant-c01",
       "title": "Bug: Excessive 429 errors with Gemini 3.1",
       "type": "feature",
       "status": "done",
