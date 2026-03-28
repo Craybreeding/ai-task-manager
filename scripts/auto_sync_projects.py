@@ -33,23 +33,25 @@ ORG = "goodidea-ggn"
 # stage 覆盖会强制生效，忽略自动检测和历史值
 MANUAL_OVERRIDES: dict[str, dict] = {
     # === 用户确认的阶段分类（不允许 LLM/sync 覆盖）===
-    "consumer-insight-v2": {"name": "Consumer Insight v2", "stage": "正式上线(PROD)"},
-    "consumer-insights": {"name": "Consumer Insights", "stage": "正式上线(PROD)"},
-    "ggn-workspace": {"stage": "正式上线(PROD)"},
-    "ggn-workspace-frontend": {"stage": "正式上线(PROD)"},
-    "strategy-chat": {"stage": "正式上线(PROD)"},
-    "strategy_chat": {"stage": "正式上线(PROD)"},
-    "openclaw-skillhub": {"stage": "正式上线(PROD)"},
-    "draft-audit": {"stage": "试运行(MVP)"},
-    "web-pilot": {"stage": "试运行(MVP)"},
-    "xingtu-selector": {"stage": "试运行(MVP)"},
+    "consumer-insight-v2": {"name": "Consumer Insight v2", "stage": "正式上线(PROD)", "description": "消费者洞察平台，自动聚合社交评论和电商评价生成分析报告"},
+    "consumer-insights": {"name": "Consumer Insights", "stage": "正式上线(PROD)", "description": "消费者洞察 v1，小红书/抖音评论采集与分析"},
+    "ggn-workspace": {"stage": "正式上线(PROD)", "description": "GGN 工作空间后端，统一管理 AI agent 和自动化任务"},
+    "ggn-workspace-frontend": {"stage": "正式上线(PROD)", "description": "GGN 工作空间前端，AI 对话和文件管理界面"},
+    "strategy-chat": {"stage": "正式上线(PROD)", "description": "策略对话 AI，品牌策略问答和竞品分析助手"},
+    "strategy_chat": {"stage": "正式上线(PROD)", "description": "策略对话 AI，品牌策略问答和竞品分析助手"},
+    "openclaw-skillhub": {"stage": "正式上线(PROD)", "description": "OpenClaw 技能中心，管理和分发 bot skills"},
+    "draft-audit": {"stage": "试运行(MVP)", "description": "AI 审稿工具，自动检查稿件合规性和品牌调性"},
+    "web-pilot": {"stage": "试运行(MVP)", "description": "浏览器自动化 agent，支持网页操作和数据提取"},
+    "xingtu-selector": {"stage": "试运行(MVP)", "description": "星图达人筛选工具，自动化抖音达人选号流程"},
     "ai-captain-dashboard": {
         "name": "AI Captain Dashboard",
         "stage": "试运行(MVP)",
         "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
+        "description": "AI 项目驾驶舱，看板式管理所有 AI 项目进度和里程碑",
     },
-    "design-agent": {"stage": "验证中"},
-    "yuntu-datapicker": {"stage": "验证中"},
+    "design-agent": {"stage": "验证中", "description": "设计素材搜索 agent，跨站检索设计灵感和素材"},
+    "yuntu-datapicker": {"stage": "验证中", "description": "云图数据提取工具，自动化巨量云图报告数据采集"},
+    "noodle-monitor": {"stage": "验证中", "description": "面条监控系统，抖音达人视频数据追踪和异常预警"},
 }
 
 # GitHub login → 显示名映射（不需要映射的就不写，原样显示）
@@ -881,6 +883,7 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False, gen_conditio
             "wau": prev.get("wau", 0),
             "weeklyRuns": prev.get("weeklyRuns", 0),
             "hoursSaved": prev.get("hoursSaved", 0),
+            "description": override.get("description") or repo.get("description") or prev.get("description", ""),
         }
         projects.append(project)
         cert = "✓" if is_certain else "?"
