@@ -34,7 +34,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "blockers": []
     },
     {
       "id": "consumer-insights",
@@ -129,10 +130,10 @@
     {
       "id": "strategy-chat",
       "name": "strategy_chat",
-      "stage": "验证中",
+      "stage": "正式上线(PROD)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
-      "status": "red",
+      "status": "green",
       "sponsor": "待确认",
       "captain": "supermaty",
       "blocker": "待确认",
@@ -980,19 +981,9 @@
   ],
   "tasks": [
     {
-      "id": "ai-captain-dashboard-issue-1",
-      "projectId": "ai-captain-dashboard",
-      "conditionId": "cond-ai-captain-dashboard-3",
-      "title": "test milestone link",
-      "type": "feature",
-      "status": "done",
-      "assignee": "待确认",
-      "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
-    },
-    {
       "id": "consumer-insight-v2-issue-2",
       "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c03",
+      "conditionId": "consumer-insight-v2-c04",
       "title": "待做：launchd 自启 + cloudflared 迁移 + 抖音交互式登录",
       "type": "feature",
       "status": "pending",
@@ -1010,9 +1001,29 @@
       "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/1"
     },
     {
+      "id": "ai-captain-dashboard-issue-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-3",
+      "title": "test milestone link",
+      "type": "feature",
+      "status": "done",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
+    },
+    {
+      "id": "strategy-chat-issue-111",
+      "projectId": "strategy-chat",
+      "conditionId": "strategy-chat-c03",
+      "title": "Feature: 把用户session会话和rag内存存入redis",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/strategy_chat/issues/111"
+    },
+    {
       "id": "strategy-chat-issue-110",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1022,7 +1033,7 @@
     {
       "id": "strategy-chat-issue-109",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1032,7 +1043,7 @@
     {
       "id": "strategy-chat-issue-107",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1042,7 +1053,7 @@
     {
       "id": "strategy-chat-issue-105",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1052,7 +1063,7 @@
     {
       "id": "strategy-chat-issue-104",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c02",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1062,7 +1073,7 @@
     {
       "id": "strategy-chat-issue-100",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "精细化处理复杂 Excel 文件",
       "type": "feature",
       "status": "pending",
@@ -1092,7 +1103,7 @@
     {
       "id": "strategy-chat-issue-97",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "将 RAG 功能集成进入 Langfuse",
       "type": "feature",
       "status": "pending",
@@ -1112,7 +1123,7 @@
     {
       "id": "strategy-chat-issue-84",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c03",
+      "conditionId": "",
       "title": "新增本地账号密码登录用户有效期控制功能",
       "type": "feature",
       "status": "pending",
@@ -1132,7 +1143,7 @@
     {
       "id": "strategy-chat-issue-81",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c01",
       "title": "升级google embedding模型",
       "type": "feature",
       "status": "pending",
@@ -1152,7 +1163,7 @@
     {
       "id": "strategy-chat-issue-79",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "[strategy_chat] 优化修改桃姐遇到的文件中公式列的问题",
       "type": "feature",
       "status": "pending",
@@ -1162,7 +1173,7 @@
     {
       "id": "strategy-chat-issue-78",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c03",
       "title": "添加对话分享功能（只读）",
       "type": "feature",
       "status": "done",
@@ -1172,7 +1183,7 @@
     {
       "id": "strategy-chat-issue-77",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c05",
       "title": "引入 RAG 定期评判机制",
       "type": "feature",
       "status": "pending",
@@ -1262,7 +1273,7 @@
     {
       "id": "strategy-chat-issue-64",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "allow aggregated data only excel file to be uploaded in strategy chat",
       "type": "feature",
       "status": "done",
@@ -1272,7 +1283,7 @@
     {
       "id": "strategy-chat-issue-57",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c04",
       "title": "optimize UI docs upload approach",
       "type": "feature",
       "status": "done",
@@ -1372,7 +1383,7 @@
     {
       "id": "strategy-chat-issue-34",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c03",
       "title": "Feature: Cache user chat history using Redis",
       "type": "feature",
       "status": "pending",
@@ -1422,7 +1433,7 @@
     {
       "id": "draft-audit-issue-1",
       "projectId": "draft-audit",
-      "conditionId": "draft-audit-c05",
+      "conditionId": "draft-audit-c02",
       "title": "Apply Tech Assistant into draft audit",
       "type": "feature",
       "status": "active",
@@ -1662,7 +1673,7 @@
     {
       "id": "ggn-workspace-frontend-issue-6",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "switch UI theme between light and dark",
       "type": "feature",
       "status": "active",
@@ -1692,7 +1703,7 @@
     {
       "id": "ggn-workspace-frontend-issue-3",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "Core Product image upload",
       "type": "feature",
       "status": "active",
@@ -1702,7 +1713,7 @@
     {
       "id": "ggn-workspace-frontend-issue-2",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c01",
+      "conditionId": "",
       "title": "VI logo upload and main color extract",
       "type": "feature",
       "status": "active",
