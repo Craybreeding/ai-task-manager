@@ -265,7 +265,8 @@
       "owner": "Eric-Zhang1990",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "yd-m1"
     },
     {
       "id": "draft-audit-c01",
@@ -278,7 +279,8 @@
       "owner": "swr222-cmd",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "da-m1"
     },
     {
       "id": "xingtu-selector-c01",
@@ -291,7 +293,8 @@
       "owner": "swr222-cmd",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "xs-m1"
     },
     {
       "id": "tech-assistant-c01",
@@ -317,7 +320,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "gwf-m1"
     },
     {
       "id": "ggn-workspace-agent-c01",
@@ -330,7 +334,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "gw-m1"
     },
     {
       "id": "strategy-chat-c01",
@@ -343,7 +348,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "sc-m1"
     },
     {
       "id": "strategy-chat-c02",
@@ -356,7 +362,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "sc-m1"
     },
     {
       "id": "strategy-chat-c03",
@@ -369,7 +376,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "sc-m1"
     },
     {
       "id": "strategy-chat-c04",
@@ -382,7 +390,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "sc-m1"
     },
     {
       "id": "strategy-chat-c05",
@@ -395,7 +404,8 @@
       "owner": "supermaty",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "sc-m1"
     },
     {
       "id": "ms-consumer-insight-v2-1",
@@ -1703,6 +1713,198 @@
       "label": "M3",
       "title": "Multi-Platform",
       "goal": "微博爬虫 + 三平台统一 schema + 竞品品牌情绪追踪",
+      "confirmed": false
+    },
+    {
+      "id": "ci-m1",
+      "projectId": "consumer-insights",
+      "label": "M1",
+      "title": "Platform Stability",
+      "goal": "WS keepalive 稳定，登录面板无崩溃，日常可靠运行",
+      "confirmed": false
+    },
+    {
+      "id": "ci-m2",
+      "projectId": "consumer-insights",
+      "label": "M2",
+      "title": "Data Pipeline Enhancement",
+      "goal": "数据采集管道优化，支持更多数据源和自动化清洗",
+      "confirmed": false
+    },
+    {
+      "id": "ci-m3",
+      "projectId": "consumer-insights",
+      "label": "M3",
+      "title": "Analytics & Reporting",
+      "goal": "分析报表自动化，支持定时推送和多维度对比",
+      "confirmed": false
+    },
+    {
+      "id": "da-m1",
+      "projectId": "draft-audit",
+      "label": "M1",
+      "title": "MVP Audit Pipeline",
+      "goal": "完整审稿流程跑通，支持队列持久化和导出",
+      "confirmed": false
+    },
+    {
+      "id": "da-m2",
+      "projectId": "draft-audit",
+      "label": "M2",
+      "title": "Batch Processing",
+      "goal": "批量审稿+串行队列+结果缓存，支持大规模使用",
+      "confirmed": false
+    },
+    {
+      "id": "da-m3",
+      "projectId": "draft-audit",
+      "label": "M3",
+      "title": "AI-Assisted Review",
+      "goal": "AI 辅助审稿建议，自动标记问题点和改进方向",
+      "confirmed": false
+    },
+    {
+      "id": "gw-m1",
+      "projectId": "ggn-workspace",
+      "label": "M1",
+      "title": "Backend Stable",
+      "goal": "CI/CD 部署流程完整，Langfuse 监控接入，核心 API 稳定",
+      "confirmed": false
+    },
+    {
+      "id": "gw-m2",
+      "projectId": "ggn-workspace",
+      "label": "M2",
+      "title": "Feature Complete",
+      "goal": "PPT 模板管理+用户反馈系统+文件处理全链路",
+      "confirmed": false
+    },
+    {
+      "id": "gw-m3",
+      "projectId": "ggn-workspace",
+      "label": "M3",
+      "title": "Platform Integration",
+      "goal": "与其他内部工具集成，统一工作台入口",
+      "confirmed": false
+    },
+    {
+      "id": "gwf-m1",
+      "projectId": "ggn-workspace-frontend",
+      "label": "M1",
+      "title": "UI Foundation",
+      "goal": "AI assistant 集成，PPT 模板页面上线，基础主题切换",
+      "confirmed": false
+    },
+    {
+      "id": "gwf-m2",
+      "projectId": "ggn-workspace-frontend",
+      "label": "M2",
+      "title": "UX Polish",
+      "goal": "用户反馈驱动的 UI 优化，暗色主题完善，交互流畅度提升",
+      "confirmed": false
+    },
+    {
+      "id": "gwf-m3",
+      "projectId": "ggn-workspace-frontend",
+      "label": "M3",
+      "title": "Advanced Features",
+      "goal": "多模态内容编辑，协作功能，模板市场",
+      "confirmed": false
+    },
+    {
+      "id": "nm-m1",
+      "projectId": "noodle-monitor",
+      "label": "M1",
+      "title": "Data Collection MVP",
+      "goal": "核心监控数据采集跑通，定时任务稳定运行",
+      "confirmed": false
+    },
+    {
+      "id": "nm-m2",
+      "projectId": "noodle-monitor",
+      "label": "M2",
+      "title": "Alert & Dashboard",
+      "goal": "异常检测+告警推送+可视化看板",
+      "confirmed": false
+    },
+    {
+      "id": "nm-m3",
+      "projectId": "noodle-monitor",
+      "label": "M3",
+      "title": "Trend Analysis",
+      "goal": "历史趋势分析，竞品对比，自动报告生成",
+      "confirmed": false
+    },
+    {
+      "id": "sc-m1",
+      "projectId": "strategy-chat",
+      "label": "M1",
+      "title": "PROD Stability",
+      "goal": "End-to-end workflow 稳定，核心功能无 P0 bug，有真实用户",
+      "confirmed": false
+    },
+    {
+      "id": "sc-m2",
+      "projectId": "strategy-chat",
+      "label": "M2",
+      "title": "Feature Enhancement",
+      "goal": "文件上传/附件功能完善，Langfuse 集成，Redis session 存储",
+      "confirmed": false
+    },
+    {
+      "id": "sc-m3",
+      "projectId": "strategy-chat",
+      "label": "M3",
+      "title": "Feedback Loop",
+      "goal": "飞书/周报反馈回路，用户行为分析，自动优化策略",
+      "confirmed": false
+    },
+    {
+      "id": "xs-m1",
+      "projectId": "xingtu-selector",
+      "label": "M1",
+      "title": "Selector MVP",
+      "goal": "登录 bug 修复，完整筛选流程跑通，CI/CD + Langfuse 接入",
+      "confirmed": false
+    },
+    {
+      "id": "xs-m2",
+      "projectId": "xingtu-selector",
+      "label": "M2",
+      "title": "MCN & KOL Matching",
+      "goal": "MCN 刊例筛选，KOL 智能匹配推荐，数据缓存",
+      "confirmed": false
+    },
+    {
+      "id": "xs-m3",
+      "projectId": "xingtu-selector",
+      "label": "M3",
+      "title": "Automation",
+      "goal": "自动化选号报告，批量比价，与云图数据打通",
+      "confirmed": false
+    },
+    {
+      "id": "yd-m1",
+      "projectId": "yuntu-datapicker",
+      "label": "M1",
+      "title": "Data Extraction MVP",
+      "goal": "KOL 矩阵取数+乐高周报模块跑通，前端单选功能完成",
+      "confirmed": false
+    },
+    {
+      "id": "yd-m2",
+      "projectId": "yuntu-datapicker",
+      "label": "M2",
+      "title": "Full Pipeline",
+      "goal": "品牌心智/行业搜索/触点能效全链路取数和后处理",
+      "confirmed": false
+    },
+    {
+      "id": "yd-m3",
+      "projectId": "yuntu-datapicker",
+      "label": "M3",
+      "title": "Automation & Export",
+      "goal": "定时自动取数，Excel/PPT 一键导出，Langfuse 监控",
       "confirmed": false
     }
   ]
