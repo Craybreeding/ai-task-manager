@@ -1721,7 +1721,7 @@
       "label": "M1",
       "title": "Platform Stability",
       "goal": "WS keepalive 稳定，登录面板无崩溃，日常可靠运行",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "ci-m2",
@@ -1745,7 +1745,7 @@
       "label": "M1",
       "title": "MVP Audit Pipeline",
       "goal": "完整审稿流程跑通，支持队列持久化和导出",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "da-m2",
@@ -1769,7 +1769,7 @@
       "label": "M1",
       "title": "Backend Stable",
       "goal": "CI/CD 部署流程完整，Langfuse 监控接入，核心 API 稳定",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "gw-m2",
@@ -1793,7 +1793,7 @@
       "label": "M1",
       "title": "UI Foundation",
       "goal": "AI assistant 集成，PPT 模板页面上线，基础主题切换",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "gwf-m2",
@@ -1841,7 +1841,7 @@
       "label": "M1",
       "title": "PROD Stability",
       "goal": "End-to-end workflow 稳定，核心功能无 P0 bug，有真实用户",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "sc-m2",
@@ -1865,7 +1865,7 @@
       "label": "M1",
       "title": "Selector MVP",
       "goal": "登录 bug 修复，完整筛选流程跑通，CI/CD + Langfuse 接入",
-      "confirmed": false
+      "confirmed": true
     },
     {
       "id": "xs-m2",
