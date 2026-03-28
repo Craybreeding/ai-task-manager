@@ -1779,6 +1779,296 @@
       "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/1"
+    },
+    {
+      "id": "yuntu-datapicker-c05-task-1",
+      "projectId": "yuntu-datapicker",
+      "conditionId": "yuntu-datapicker-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "draft-audit-c03-task-1",
+      "projectId": "draft-audit",
+      "conditionId": "draft-audit-c03",
+      "title": "有基础反馈来源（用户/业务方）",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "draft-audit-c04-task-1",
+      "projectId": "draft-audit",
+      "conditionId": "draft-audit-c04",
+      "title": "有周更新机制",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "draft-audit-c05-task-1",
+      "projectId": "draft-audit",
+      "conditionId": "draft-audit-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "xingtu-selector-c05-task-1",
+      "projectId": "xingtu-selector",
+      "conditionId": "xingtu-selector-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "tech-assistant-c02-task-1",
+      "projectId": "tech-assistant",
+      "conditionId": "tech-assistant-c02",
+      "title": "Captain 已明确，有人负责",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "tech-assistant-c05-task-1",
+      "projectId": "tech-assistant",
+      "conditionId": "tech-assistant-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "ggn-workspace-frontend-c04-task-1",
+      "projectId": "ggn-workspace-frontend",
+      "conditionId": "ggn-workspace-frontend-c04",
+      "title": "有周更新机制",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "ggn-workspace-frontend-c05-task-1",
+      "projectId": "ggn-workspace-frontend",
+      "conditionId": "ggn-workspace-frontend-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "ggn-workspace-agent-c05-task-1",
+      "projectId": "ggn-workspace",
+      "conditionId": "ggn-workspace-agent-c05",
+      "title": "基础 Eval 指标已定义",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": ""
+    },
+    {
+      "id": "consumer-insight-v2-c01-task-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "consumer-insight-v2-c01",
+      "title": "Bug #1-4 全修（PR #12 已 merge）",
+      "type": "feature",
+      "status": "done",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "consumer-insight-v2-c03-task-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "consumer-insight-v2-c03",
+      "title": "GitHub Projects 看板",
+      "type": "feature",
+      "status": "done",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "consumer-insight-v2-c05-task-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "consumer-insight-v2-c05",
+      "title": "deploy-verify hook",
+      "type": "feature",
+      "status": "done",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "consumer-insight-v2-c06-task-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "consumer-insight-v2-c06",
+      "title": "suggest-keywords: gemini-2.5-flash + httpx + proxy fallback",
+      "type": "feature",
+      "status": "done",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "consumer-insight-v2-c07-task-1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "consumer-insight-v2-c07",
+      "title": "pinxiao 网络修复（Clash Verge TUN 黑洞）",
+      "type": "feature",
+      "status": "done",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-1-task-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-1",
+      "title": "功能完整性",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "ggn",
+      "url": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-2-task-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-2",
+      "title": "系统稳定性",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "ggn",
+      "url": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-4-task-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-4",
+      "title": "用户反馈",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "ggn",
+      "url": ""
+    },
+    {
+      "id": "cond-ai-captain-dashboard-5-task-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-5",
+      "title": "文档完整性",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "ggn",
+      "url": ""
+    },
+    {
+      "id": "cond-design-agent-1-task-1",
+      "projectId": "design-agent",
+      "conditionId": "cond-design-agent-1",
+      "title": "核心功能实现",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-design-agent-2-task-1",
+      "projectId": "design-agent",
+      "conditionId": "cond-design-agent-2",
+      "title": "代码质量与测试",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-design-agent-3-task-1",
+      "projectId": "design-agent",
+      "conditionId": "cond-design-agent-3",
+      "title": "系统部署与监控",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-design-agent-4-task-1",
+      "projectId": "design-agent",
+      "conditionId": "cond-design-agent-4",
+      "title": "用户反馈收集",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-design-agent-5-task-1",
+      "projectId": "design-agent",
+      "conditionId": "cond-design-agent-5",
+      "title": "文档编写与更新",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-web-pilot-1-task-1",
+      "projectId": "web-pilot",
+      "conditionId": "cond-web-pilot-1",
+      "title": "增强功能",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-web-pilot-2-task-1",
+      "projectId": "web-pilot",
+      "conditionId": "cond-web-pilot-2",
+      "title": "性能优化",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-web-pilot-3-task-1",
+      "projectId": "web-pilot",
+      "conditionId": "cond-web-pilot-3",
+      "title": "稳定性提升",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-web-pilot-4-task-1",
+      "projectId": "web-pilot",
+      "conditionId": "cond-web-pilot-4",
+      "title": "用户增长",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "cond-web-pilot-5-task-1",
+      "projectId": "web-pilot",
+      "conditionId": "cond-web-pilot-5",
+      "title": "文档完善",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "swr222-cmd",
+      "url": ""
     }
   ]
 }

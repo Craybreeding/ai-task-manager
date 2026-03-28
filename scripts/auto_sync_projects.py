@@ -32,15 +32,26 @@ ORG = "goodidea-ggn"
 # 手动覆盖: 支持 name/stage/captain/sponsor/currentFocus/blocker 等字段
 # stage 覆盖会强制生效，忽略自动检测和历史值
 MANUAL_OVERRIDES: dict[str, dict] = {
-    "consumer-insight-v2": {"name": "Consumer Insight v2"},
-    "consumer-insights": {"name": "Consumer Insights"},
+    # === 用户确认的阶段分类（不允许 LLM/sync 覆盖）===
+    "consumer-insight-v2": {"name": "Consumer Insight v2", "stage": "正式上线(PROD)"},
+    "consumer-insights": {"name": "Consumer Insights", "stage": "正式上线(PROD)"},
+    "ggn-workspace": {"stage": "正式上线(PROD)"},
+    "ggn-workspace-frontend": {"stage": "正式上线(PROD)"},
+    "strategy-chat": {"stage": "正式上线(PROD)"},
+    "strategy_chat": {"stage": "正式上线(PROD)"},
+    "openclaw-skillhub": {"stage": "正式上线(PROD)"},
+    "draft-audit": {"stage": "试运行(MVP)"},
+    "web-pilot": {"stage": "试运行(MVP)"},
+    "xingtu-selector": {"stage": "试运行(MVP)"},
     "ai-captain-dashboard": {
         "name": "AI Captain Dashboard",
-        "stage": "试运行(MVP)",
+        "stage": "验证中",
         "captain": "ggn",
         "sponsor": "ggn",
         "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
     },
+    "design-agent": {"stage": "验证中"},
+    "yuntu-datapicker": {"stage": "验证中"},
 }
 
 # GitHub login → 显示名映射（不需要映射的就不写，原样显示）
@@ -885,26 +896,38 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False, gen_conditio
                 all_tasks.extend(raw_tasks)
 
     # Pass 2: LLM 精修不确定的项目
+    # 注意: MANUAL_OVERRIDES 和 prev 里有 stage 的项目不参与精修
+    protected_ids = set()
+    for repo_name, ov in MANUAL_OVERRIDES.items():
+        if "stage" in ov:
+            protected_ids.add(repo_name.replace("_", "-"))
+    for pid, prev in existing_projects.items():
+        if prev.get("stage") and prev["stage"] != "验证中":  # 验证中是默认猜测，可以被精修
+            protected_ids.add(pid)
+
     if uncertain and use_llm:
-        print(f"\n  🤖 LLM refining {len(uncertain)} uncertain projects...")
-        llm_results = llm_refine_stages(uncertain)
-        if llm_results:
-            proj_map = {p["id"]: p for p in projects}
-            for repo_id, refinement in llm_results.items():
-                if repo_id in proj_map:
-                    p = proj_map[repo_id]
-                    new_stage = refinement.get("stage", "")
-                    confidence = refinement.get("confidence", 0)
-                    if new_stage and confidence >= 0.6:
-                        old = p["stage"]
-                        p["stage"] = new_stage
-                        p["targetStage"] = _next_stage(new_stage)
-                        if refinement.get("currentFocus") and p["currentFocus"] == "待确认":
-                            p["currentFocus"] = refinement["currentFocus"]
-                        print(f"    {repo_id}: {old} → {new_stage} (confidence={confidence})")
-                    else:
-                        print(f"    {repo_id}: kept {p['stage']} (low confidence={confidence})")
-            print(f"  ✅ LLM refinement done")
+        # 过滤掉受保护的项目
+        refinable = [u for u in uncertain if u["id"] not in protected_ids]
+        if refinable:
+            print(f"\n  🤖 LLM refining {len(refinable)} uncertain projects (skipping {len(uncertain)-len(refinable)} protected)...")
+            llm_results = llm_refine_stages(refinable)
+            if llm_results:
+                proj_map = {p["id"]: p for p in projects}
+                for repo_id, refinement in llm_results.items():
+                    if repo_id in proj_map:
+                        p = proj_map[repo_id]
+                        new_stage = refinement.get("stage", "")
+                        confidence = refinement.get("confidence", 0)
+                        if new_stage and confidence >= 0.6:
+                            old = p["stage"]
+                            p["stage"] = new_stage
+                            p["targetStage"] = _next_stage(new_stage)
+                            if refinement.get("currentFocus") and p["currentFocus"] == "待确认":
+                                p["currentFocus"] = refinement["currentFocus"]
+                            print(f"    {repo_id}: {old} → {new_stage} (confidence={confidence})")
+                        else:
+                            print(f"    {repo_id}: kept {p['stage']} (low confidence={confidence})")
+                print(f"  ✅ LLM refinement done")
 
     # Pass 3: 为缺少条件的活跃项目自动生成升级路径
     if gen_conditions:
