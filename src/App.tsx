@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  Zap, ClipboardList, FlaskConical, Rocket, CheckCircle2,
+  ClipboardList, FlaskConical, Rocket, CheckCircle2,
   BarChart3, FileEdit, Star, Bot, MessageSquare, Monitor, Brain, Package,
-  X, AlertTriangle, ExternalLink, ChevronRight, ChevronDown, RefreshCw,
+  X, AlertTriangle, ExternalLink, ChevronRight, ChevronDown, RefreshCw, Info,
 } from 'lucide-react'
 import type { AppData, Condition, ConditionStatus, Milestone, OperationStatus, Project, Stage, Task, TaskStatus } from './types'
 
@@ -14,6 +14,13 @@ const STAGE_CONFIG: Record<Stage, { color: string; Icon: typeof ClipboardList }>
   '验证中':         { color: '#F3B54A', Icon: FlaskConical },
   '试运行(MVP)':    { color: '#A78BFA', Icon: Rocket },
   '正式上线(PROD)': { color: '#34D399', Icon: CheckCircle2 },
+}
+
+const STAGE_DESC: Record<Stage, string> = {
+  '需求拆解':       '只有想法/需求，没开始写代码',
+  '验证中':         '本地开发中，功能还在迭代',
+  '试运行(MVP)':    '核心功能可用，部署到可访问的环境，日常在用但还不稳定',
+  '正式上线(PROD)': '部署到生产服务器，稳定运行，有人日常依赖',
 }
 
 const PROJECT_ICONS: Record<string, typeof BarChart3> = {
@@ -172,9 +179,7 @@ export default function App() {
   )
   if (authEnabled && !user) return (
     <div className="flex flex-col items-center justify-center min-h-screen gap-6 bg-[var(--color-brand-50)]">
-      <div className="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] text-white rounded-2xl shadow-lg">
-        <Zap size={32} />
-      </div>
+      <img src="favicon.png" alt="赞意" className="w-16 h-16 rounded-2xl shadow-lg" />
       <h1 className="text-2xl font-bold text-[var(--color-text-primary)]">AI Captain 项目驾驶舱</h1>
       <button
         onClick={login}
@@ -238,9 +243,7 @@ export default function App() {
       <div className="sticky top-0 z-30 -mx-8 px-8 -mt-6 pt-6 pb-3 bg-[var(--color-brand-50)]/95 backdrop-blur-sm">
         <header className="flex items-center justify-between mb-4 gap-4 flex-wrap bg-white/80 backdrop-blur-sm rounded-2xl px-6 py-3 shadow-sm border border-white/60">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 flex items-center justify-center bg-gradient-to-br from-[var(--color-brand)] to-[var(--color-brand-dark)] text-white rounded-xl shadow-md shadow-purple-200">
-              <Zap size={20} />
-            </div>
+            <img src="favicon.png" alt="赞意" className="w-10 h-10 rounded-xl shadow-md" />
             <div>
               <span className="text-[10px] font-semibold tracking-wide uppercase text-[var(--color-brand)]">AI Captain</span>
               <h1 className="text-xl font-bold leading-tight text-[var(--color-text-primary)]">项目驾驶舱</h1>
@@ -306,10 +309,10 @@ export default function App() {
           ))}
         </div>
 
-        {/* ── Stage Column Headers (frozen) ─────────── */}
-        <div className={`grid grid-cols-4 gap-5 transition-all duration-300
+        {/* ── Stage Column Headers (frozen, hidden on mobile — inline labels used instead) ─────────── */}
+        <div className={`grid grid-cols-4 gap-5 transition-all duration-300 max-md:hidden
           ${drawerOpen ? 'mr-[460px]' : ''}
-          max-lg:grid-cols-2 max-md:grid-cols-1
+          max-lg:grid-cols-2
           ${drawerOpen ? 'max-lg:mr-0' : ''}`}
         >
           {STAGES.map(stage => {
@@ -324,6 +327,12 @@ export default function App() {
                     <StageIcon size={15} style={{ color: cfg.color }} />
                   </div>
                   <span className="text-sm font-semibold text-[var(--color-text-primary)]">{stage}</span>
+                  <span className="relative group cursor-help">
+                    <Info size={13} className="text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors" />
+                    <span className="absolute left-1/2 -translate-x-1/2 top-6 z-50 w-52 px-3 py-2 rounded-lg bg-slate-800 text-white text-xs leading-relaxed shadow-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity whitespace-normal">
+                      {STAGE_DESC[stage]}
+                    </span>
+                  </span>
                   <span
                     className="text-xs font-bold ml-auto px-2.5 py-0.5 rounded-full"
                     style={{ background: `${cfg.color}15`, color: cfg.color }}
@@ -349,6 +358,12 @@ export default function App() {
           const cfg = STAGE_CONFIG[stage]
           return (
             <div key={stage} className={`flex flex-col gap-3 min-w-0 ${isEmpty ? 'opacity-60' : ''}`}>
+              {/* Mobile stage label — hidden on desktop where columns already have headers */}
+              <div className="hidden max-lg:flex items-center gap-2 px-1 pt-2">
+                <div className="w-2 h-2 rounded-full" style={{ background: cfg.color }} />
+                <span className="text-xs font-semibold text-[var(--color-text-secondary)]">{stage}</span>
+                <span className="text-[10px] text-[var(--color-text-muted)]">({stageProjects.length})</span>
+              </div>
               {isEmpty && (
                 <div className="p-8 text-center text-sm text-[var(--color-text-muted)] border-2 border-dashed border-slate-200 rounded-xl bg-white/50">
                   暂无项目

@@ -45,9 +45,7 @@ MANUAL_OVERRIDES: dict[str, dict] = {
     "xingtu-selector": {"stage": "试运行(MVP)"},
     "ai-captain-dashboard": {
         "name": "AI Captain Dashboard",
-        "stage": "验证中",
-        "captain": "ggn",
-        "sponsor": "ggn",
+        "stage": "试运行(MVP)",
         "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
     },
     "design-agent": {"stage": "验证中"},
