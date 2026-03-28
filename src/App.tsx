@@ -197,12 +197,15 @@ export default function App() {
 
   const visibleProjects = data.projects.filter(p => p.operationStatus === opFilter)
 
+  const activeProjects = data.projects.filter(p => p.operationStatus === '进行中')
   const counts = {
-    total: data.projects.filter(p => p.operationStatus === '进行中').length,
-    red: data.projects.filter(p => p.operationStatus === '进行中' && p.status === 'red').length,
+    total: activeProjects.length,
+    red: activeProjects.filter(p => p.status === 'red').length,
     blocked: data.tasks.filter(t => t.status === 'blocked').length,
     totalTasks: data.tasks.length,
     doneTasks: data.tasks.filter(t => t.status === 'done').length,
+    confirmedMilestones: (data.milestones ?? []).filter(m => m.confirmed).length,
+    totalMilestones: (data.milestones ?? []).length,
   }
 
   function selectProject(p: Project) {
@@ -251,13 +254,26 @@ export default function App() {
           </div>
           <div className="flex gap-3 flex-wrap items-center">
             <StatChip label="进行中" value={counts.total} />
-            <StatChip label="红灯" value={counts.red} tone="red" />
-            <StatChip label="阻塞" value={counts.blocked} tone="amber" />
+            <div className="max-md:hidden flex gap-3">
+              <StatChip label="红灯" value={counts.red} tone="red" />
+              <StatChip label="阻塞" value={counts.blocked} tone="amber" />
+            </div>
             <StatChip
               label="任务完成率"
               value={counts.totalTasks > 0 ? Math.round((counts.doneTasks / counts.totalTasks) * 100) : 0}
               suffix="%"
             />
+            <div className="max-md:hidden flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-xl shadow-sm" title="各阶段项目分布">
+              {STAGES.map(s => {
+                const n = activeProjects.filter(p => p.stage === s).length
+                return n > 0 ? (
+                  <span key={s} className="flex items-center gap-1 text-[11px]">
+                    <span className="w-2 h-2 rounded-full" style={{ background: STAGE_CONFIG[s].color }} />
+                    <span className="font-bold" style={{ color: STAGE_CONFIG[s].color }}>{n}</span>
+                  </span>
+                ) : null
+              })}
+            </div>
             <button
               onClick={handleSync}
               disabled={syncing}
@@ -359,7 +375,15 @@ export default function App() {
           return (
             <div key={stage} className={`flex flex-col gap-3 min-w-0 ${isEmpty ? 'opacity-60' : ''}`}>
               {/* Mobile stage label — hidden on desktop where columns already have headers */}
-              <div className="hidden max-lg:flex items-center gap-2 px-1 pt-2">
+              <div className="hidden max-md:flex items-center gap-2 px-3 py-2 mt-2 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <div className="w-6 h-6 rounded-md flex items-center justify-center" style={{ background: `${cfg.color}15` }}>
+                  {(() => { const SIcon = cfg.Icon; return <SIcon size={13} style={{ color: cfg.color }} /> })()}
+                </div>
+                <span className="text-xs font-semibold text-[var(--color-text-primary)]">{stage}</span>
+                <span className="text-[10px] text-[var(--color-text-muted)] ml-auto">{stageProjects.length} 项目</span>
+              </div>
+              {/* Tablet stage label */}
+              <div className="hidden max-lg:flex md:flex max-md:hidden items-center gap-2 px-1 pt-2">
                 <div className="w-2 h-2 rounded-full" style={{ background: cfg.color }} />
                 <span className="text-xs font-semibold text-[var(--color-text-secondary)]">{stage}</span>
                 <span className="text-[10px] text-[var(--color-text-muted)]">({stageProjects.length})</span>
@@ -376,6 +400,7 @@ export default function App() {
                   active={selectedProject?.id === p.id}
                   tasks={data.tasks.filter(t => t.projectId === p.id)}
                   conditions={data.conditions.filter(c => c.projectId === p.id)}
+                  milestones={(data.milestones ?? []).filter(m => m.projectId === p.id)}
                   stageColor={cfg.color}
                   onClick={() => selectProject(p)}
                 />
@@ -402,13 +427,19 @@ export default function App() {
                     Captain: {selectedProject.captain}
                   </p>
                 )}
+                {selectedProject.description && (
+                  <p className="text-[11px] text-[var(--color-text-muted)] mt-1 leading-relaxed">
+                    {selectedProject.description}
+                  </p>
+                )}
               </div>
             </div>
             <button
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-[var(--color-text-muted)] hover:bg-slate-100 hover:text-[var(--color-text-primary)] transition-colors"
+              className="w-8 h-8 max-md:w-10 max-md:h-10 rounded-lg flex items-center justify-center text-[var(--color-text-muted)] hover:bg-slate-100 hover:text-[var(--color-text-primary)] transition-colors"
               onClick={closeDrawer}
             >
-              <X size={16} />
+              <X size={16} className="max-md:hidden" />
+              <X size={20} className="hidden max-md:block" />
             </button>
           </div>
 
@@ -472,12 +503,13 @@ function ProjectIcon({ id, size = 18 }: { id: string; size?: number }) {
 
 // ── Project Card ────────────────────────────────────────
 function ProjectCard({
-  project, active, tasks, conditions, stageColor, onClick
+  project, active, tasks, conditions, milestones, stageColor, onClick
 }: {
   project: Project
   active: boolean
   tasks: Task[]
   conditions: Condition[]
+  milestones: Milestone[]
   stageColor: string
   onClick: () => void
 }) {
@@ -517,6 +549,13 @@ function ProjectCard({
         </div>
       </div>
 
+      {/* Description */}
+      {project.description && (
+        <p className="text-[11px] text-[var(--color-text-secondary)] pl-[42px] leading-snug line-clamp-2">
+          {project.description}
+        </p>
+      )}
+
       {/* People */}
       <div className="flex gap-3 flex-wrap pl-[42px]">
         <PersonChip label="业务" name={project.sponsor} />
@@ -529,6 +568,29 @@ function ProjectCard({
           <AlertTriangle size={12} /> {project.blocker}
         </div>
       )}
+
+      {/* Integration badges */}
+      {(() => {
+        const langfuseCond = conditions.find(c => c.name.toLowerCase().includes('langfuse'))
+        const hasMilestones = milestones.length > 0
+        if (!langfuseCond && hasMilestones) return null
+        return (
+          <div className="flex gap-1.5 flex-wrap pl-[42px]">
+            {langfuseCond && (
+              <span className={`text-[10px] px-2 py-0.5 rounded-md font-medium ${
+                langfuseCond.status === 'done' ? 'bg-green-50 text-green-600 border border-green-100' : 'bg-amber-50 text-amber-600 border border-amber-100'
+              }`}>
+                {langfuseCond.status === 'done' ? '✓ Langfuse' : '○ Langfuse'}
+              </span>
+            )}
+            {!hasMilestones && condTotal > 0 && (
+              <span className="text-[10px] text-[var(--color-warn)] flex items-center gap-0.5">
+                <AlertTriangle size={9} /> 缺 Milestone
+              </span>
+            )}
+          </div>
+        )
+      })()}
 
       {/* Condition progress bar */}
       {condTotal > 0 && (

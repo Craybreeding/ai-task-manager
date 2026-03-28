@@ -16,7 +16,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "AI 项目驾驶舱，看板式管理所有 AI 项目进度和里程碑"
     },
     {
       "id": "consumer-insight-v2",
@@ -34,7 +35,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "消费者洞察平台，自动聚合社交评论和电商评价生成分析报告"
     },
     {
       "id": "consumer-insights",
@@ -52,7 +54,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "消费者洞察 v1，小红书/抖音评论采集与分析"
     },
     {
       "id": "design-agent",
@@ -70,7 +73,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "设计素材搜索 agent，跨站检索设计灵感和素材"
     },
     {
       "id": "draft-audit",
@@ -88,7 +92,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "AI 审稿工具，自动检查稿件合规性和品牌调性"
     },
     {
       "id": "ggn-workspace",
@@ -106,7 +111,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "GGN 工作空间后端，统一管理 AI agent 和自动化任务"
     },
     {
       "id": "ggn-workspace-frontend",
@@ -124,7 +130,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "GGN 工作空间前端，AI 对话和文件管理界面"
     },
     {
       "id": "noodle-monitor",
@@ -142,7 +149,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "面条监控系统，抖音达人视频数据追踪和异常预警"
     },
     {
       "id": "strategy-chat",
@@ -160,7 +168,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "策略对话 AI，品牌策略问答和竞品分析助手"
     },
     {
       "id": "web-pilot",
@@ -178,7 +187,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "浏览器自动化 agent，支持网页操作和数据提取"
     },
     {
       "id": "xingtu-selector",
@@ -196,7 +206,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "星图达人筛选工具，自动化抖音达人选号流程"
     },
     {
       "id": "yuntu-datapicker",
@@ -214,7 +225,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "云图数据提取工具，自动化巨量云图报告数据采集"
     },
     {
       "id": "openclaw-skillhub",
@@ -232,7 +244,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "OpenClaw 技能中心，管理和分发 bot skills"
     },
     {
       "id": "tech-assistant",
@@ -250,7 +263,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "description": "AI assistant for good idea tech team"
     }
   ],
   "conditions": [
@@ -493,6 +507,26 @@
     }
   ],
   "tasks": [
+    {
+      "id": "consumer-insight-v2-issue-31",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "",
+      "title": "需要替换有效的小红书账号",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/31"
+    },
+    {
+      "id": "consumer-insight-v2-issue-27",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "",
+      "title": "feat: Langfuse 可观测性接入",
+      "type": "feature",
+      "status": "pending",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/27"
+    },
     {
       "id": "consumer-insight-v2-issue-21",
       "projectId": "consumer-insight-v2",

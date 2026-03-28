@@ -29,6 +29,7 @@ export type Project = {
   qualityScore: number
   opsScore: number
   adoptionScore: number
+  description: string
 }
 
 export type Condition = {
