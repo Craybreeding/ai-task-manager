@@ -246,7 +246,7 @@ if DIST.exists():
 @app.get(f"{BASE_PATH}/data.json")
 async def serve_data():
     """Serve data.json (public, no auth needed for initial load)."""
-    f = DIST / "data.json" if (DIST / "data.json").exists() else DATA_FILE
+    f = DATA_FILE  # Always read from public/ (source of truth), not dist/
     return FileResponse(f, media_type="application/json")
 
 
