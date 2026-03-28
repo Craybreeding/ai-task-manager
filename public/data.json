@@ -4,7 +4,7 @@
       "id": "ai-captain-dashboard",
       "name": "AI Captain Dashboard",
       "stage": "验证中",
-      "targetStage": "试运行(MVP)",
+      "targetStage": "正式上线(PROD)",
       "operationStatus": "进行中",
       "status": "green",
       "sponsor": "ggn",
@@ -39,7 +39,7 @@
     {
       "id": "consumer-insights",
       "name": "Consumer Insights",
-      "stage": "验证中",
+      "stage": "正式上线(PROD)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -75,7 +75,7 @@
     {
       "id": "draft-audit",
       "name": "draft-audit",
-      "stage": "验证中",
+      "stage": "试运行(MVP)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -93,7 +93,7 @@
     {
       "id": "ggn-workspace",
       "name": "ggn-workspace",
-      "stage": "验证中",
+      "stage": "正式上线(PROD)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -111,7 +111,7 @@
     {
       "id": "ggn-workspace-frontend",
       "name": "ggn-workspace-frontend",
-      "stage": "验证中",
+      "stage": "正式上线(PROD)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -147,7 +147,7 @@
     {
       "id": "web-pilot",
       "name": "web-pilot",
-      "stage": "验证中",
+      "stage": "试运行(MVP)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -165,7 +165,7 @@
     {
       "id": "xingtu-selector",
       "name": "xingtu-selector",
-      "stage": "验证中",
+      "stage": "试运行(MVP)",
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
@@ -201,7 +201,7 @@
     {
       "id": "openclaw-skillhub",
       "name": "openclaw-skillhub",
-      "stage": "需求拆解",
+      "stage": "正式上线(PROD)",
       "targetStage": "验证中",
       "operationStatus": "已暂停",
       "status": "green",
@@ -219,7 +219,7 @@
     {
       "id": "tech-assistant",
       "name": "tech-assistant",
-      "stage": "需求拆解",
+      "stage": "已暂停",
       "targetStage": "验证中",
       "operationStatus": "已暂停",
       "status": "green",
@@ -980,9 +980,19 @@
   ],
   "tasks": [
     {
+      "id": "ai-captain-dashboard-issue-1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "cond-ai-captain-dashboard-3",
+      "title": "test milestone link",
+      "type": "feature",
+      "status": "done",
+      "assignee": "待确认",
+      "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
+    },
+    {
       "id": "consumer-insight-v2-issue-2",
       "projectId": "consumer-insight-v2",
-      "conditionId": "consumer-insight-v2-c04",
+      "conditionId": "consumer-insight-v2-c03",
       "title": "待做：launchd 自启 + cloudflared 迁移 + 抖音交互式登录",
       "type": "feature",
       "status": "pending",
@@ -1002,7 +1012,7 @@
     {
       "id": "strategy-chat-issue-110",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c02",
+      "conditionId": "",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1012,7 +1022,7 @@
     {
       "id": "strategy-chat-issue-109",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c02",
+      "conditionId": "",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1022,7 +1032,7 @@
     {
       "id": "strategy-chat-issue-107",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c02",
+      "conditionId": "",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1032,7 +1042,7 @@
     {
       "id": "strategy-chat-issue-105",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c02",
+      "conditionId": "",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1042,7 +1052,7 @@
     {
       "id": "strategy-chat-issue-104",
       "projectId": "strategy-chat",
-      "conditionId": "strategy-chat-c02",
+      "conditionId": "",
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
@@ -1102,7 +1112,7 @@
     {
       "id": "strategy-chat-issue-84",
       "projectId": "strategy-chat",
-      "conditionId": "",
+      "conditionId": "strategy-chat-c03",
       "title": "新增本地账号密码登录用户有效期控制功能",
       "type": "feature",
       "status": "pending",
@@ -1412,7 +1422,7 @@
     {
       "id": "draft-audit-issue-1",
       "projectId": "draft-audit",
-      "conditionId": "draft-audit-c02",
+      "conditionId": "draft-audit-c05",
       "title": "Apply Tech Assistant into draft audit",
       "type": "feature",
       "status": "active",
@@ -1480,19 +1490,9 @@
       "url": "https://github.com/goodidea-ggn/yuntu-datapicker/issues/1"
     },
     {
-      "id": "ai-captain-dashboard-issue-1",
-      "projectId": "ai-captain-dashboard",
-      "conditionId": "cond-ai-captain-dashboard-3",
-      "title": "test milestone link",
-      "type": "feature",
-      "status": "done",
-      "assignee": "待确认",
-      "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
-    },
-    {
       "id": "xingtu-selector-issue-12",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c03",
+      "conditionId": "xingtu-selector-c01",
       "title": "星图项目登录 Bug：第一次登录失败，第二次点击直接显示已登录",
       "type": "feature",
       "status": "pending",
@@ -1512,7 +1512,7 @@
     {
       "id": "xingtu-selector-issue-6",
       "projectId": "xingtu-selector",
-      "conditionId": "xingtu-selector-c01",
+      "conditionId": "xingtu-selector-c03",
       "title": "筛选MCN的刊例",
       "type": "feature",
       "status": "pending",
@@ -1542,7 +1542,7 @@
     {
       "id": "ggn-workspace-issue-20",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c04",
+      "conditionId": "ggn-workspace-agent-c02",
       "title": "move frontend into backend repo",
       "type": "feature",
       "status": "done",
@@ -1562,7 +1562,7 @@
     {
       "id": "ggn-workspace-issue-17",
       "projectId": "ggn-workspace",
-      "conditionId": "ggn-workspace-agent-c02",
+      "conditionId": "ggn-workspace-agent-c01",
       "title": "onboard langfuse",
       "type": "feature",
       "status": "done",
@@ -1662,7 +1662,7 @@
     {
       "id": "ggn-workspace-frontend-issue-6",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "switch UI theme between light and dark",
       "type": "feature",
       "status": "active",
@@ -1682,7 +1682,7 @@
     {
       "id": "ggn-workspace-frontend-issue-4",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "ggn-workspace-frontend-c02",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "Creative workshop Implementation",
       "type": "feature",
       "status": "active",
@@ -1692,7 +1692,7 @@
     {
       "id": "ggn-workspace-frontend-issue-3",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "Core Product image upload",
       "type": "feature",
       "status": "active",
@@ -1702,7 +1702,7 @@
     {
       "id": "ggn-workspace-frontend-issue-2",
       "projectId": "ggn-workspace-frontend",
-      "conditionId": "",
+      "conditionId": "ggn-workspace-frontend-c01",
       "title": "VI logo upload and main color extract",
       "type": "feature",
       "status": "active",
