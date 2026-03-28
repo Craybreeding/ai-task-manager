@@ -34,6 +34,7 @@ export type Project = {
 export type Condition = {
   id: string
   projectId: string
+  milestoneId?: string
   name: string
   category: string
   fromStage: Stage
@@ -56,8 +57,18 @@ export type Task = {
   url: string
 }
 
+export type Milestone = {
+  id: string
+  projectId: string
+  label: string       // "M1" | "M2" | "M3"
+  title: string
+  goal: string
+  confirmed: boolean  // false = 建议，待确认
+}
+
 export type AppData = {
   projects: Project[]
   conditions: Condition[]
   tasks: Task[]
+  milestones: Milestone[]
 }

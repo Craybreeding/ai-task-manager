@@ -7,8 +7,8 @@
       "targetStage": "试运行(MVP)",
       "operationStatus": "进行中",
       "status": "green",
-      "sponsor": "ggn",
-      "captain": "ggn",
+      "sponsor": "Girish G Nair",
+      "captain": "Girish G Nair",
       "blocker": "待确认",
       "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
       "nextCheckpoint": "待确认",
@@ -16,7 +16,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/ai-captain-dashboard"
     },
     {
       "id": "consumer-insight-v2",
@@ -25,7 +26,7 @@
       "targetStage": "正式上线(PROD)",
       "operationStatus": "进行中",
       "status": "green",
-      "sponsor": "ggn",
+      "sponsor": "Girish G Nair",
       "captain": "Craybreeding",
       "blocker": "",
       "currentFocus": "网络问题已修复，正常运行中",
@@ -35,7 +36,8 @@
       "wau": 0,
       "weeklyRuns": 0,
       "hoursSaved": 0,
-      "blockers": []
+      "blockers": [],
+      "githubRepo": "goodidea-ggn/consumer-insight-v2"
     },
     {
       "id": "consumer-insights",
@@ -44,7 +46,7 @@
       "targetStage": "正式上线(PROD)",
       "operationStatus": "进行中",
       "status": "green",
-      "sponsor": "ggn",
+      "sponsor": "Girish G Nair",
       "captain": "swr222-cmd",
       "blocker": "待确认",
       "currentFocus": "WS keepalive + login panel 稳定性",
@@ -53,7 +55,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/consumer-insights"
     },
     {
       "id": "design-agent",
@@ -71,7 +74,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/design-agent"
     },
     {
       "id": "draft-audit",
@@ -89,7 +93,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/draft-audit"
     },
     {
       "id": "ggn-workspace",
@@ -107,7 +112,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/ggn-workspace"
     },
     {
       "id": "ggn-workspace-frontend",
@@ -125,7 +131,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/ggn-workspace-frontend"
     },
     {
       "id": "strategy-chat",
@@ -143,7 +150,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/strategy-chat"
     },
     {
       "id": "web-pilot",
@@ -161,7 +169,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/web-pilot"
     },
     {
       "id": "xingtu-selector",
@@ -179,7 +188,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/xingtu-selector"
     },
     {
       "id": "yuntu-datapicker",
@@ -197,7 +207,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/yuntu-datapicker"
     },
     {
       "id": "openclaw-skillhub",
@@ -215,7 +226,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/openclaw-skillhub"
     },
     {
       "id": "tech-assistant",
@@ -233,7 +245,8 @@
       "feedbackFrom": "",
       "wau": 0,
       "weeklyRuns": 0,
-      "hoursSaved": 0
+      "hoursSaved": 0,
+      "githubRepo": "goodidea-ggn/tech-assistant"
     }
   ],
   "conditions": [
@@ -245,7 +258,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "Eric-Zhang1990",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -258,7 +271,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "swr222-cmd",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -271,7 +284,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "swr222-cmd",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -284,7 +297,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -297,7 +310,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -310,7 +323,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -323,7 +336,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "active",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -336,7 +349,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "active",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -349,7 +362,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "done",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -362,7 +375,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "active",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -375,7 +388,7 @@
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
       "status": "pending",
-      "owner": "待确认",
+      "owner": "supermaty",
       "criteria": "",
       "issue": "",
       "dueDate": ""
@@ -391,7 +404,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c02",
@@ -404,7 +418,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c03",
@@ -417,7 +432,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c04",
@@ -430,7 +446,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c05",
@@ -443,7 +460,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c06",
@@ -456,7 +474,8 @@
       "owner": "Craybreeding",
       "criteria": "",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
     },
     {
       "id": "consumer-insight-v2-c07",
@@ -469,7 +488,666 @@
       "owner": "Craybreeding",
       "criteria": "关掉 Clash Verge TUN 模式",
       "issue": "",
-      "dueDate": ""
+      "dueDate": "",
+      "milestoneId": "ci-v2-m1"
+    },
+    {
+      "id": "design-agent-m1-c01",
+      "projectId": "design-agent",
+      "name": "CLI 入口 + npm run agent 命令",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m1"
+    },
+    {
+      "id": "design-agent-m1-c02",
+      "projectId": "design-agent",
+      "name": "ReAct 循环（think → act → observe）",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m1"
+    },
+    {
+      "id": "design-agent-m1-c03",
+      "projectId": "design-agent",
+      "name": "自然语言 brief → 关键词自动生成",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m1"
+    },
+    {
+      "id": "design-agent-m1-c04",
+      "projectId": "design-agent",
+      "name": "视觉相关性打分（judge 命令）",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m1"
+    },
+    {
+      "id": "design-agent-m1-c05",
+      "projectId": "design-agent",
+      "name": "18+ 设计站点验证 + 图片下载",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m1"
+    },
+    {
+      "id": "design-agent-m2-c01",
+      "projectId": "design-agent",
+      "name": "Layer 3: 多站点并行搜索",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m2"
+    },
+    {
+      "id": "design-agent-m2-c02",
+      "projectId": "design-agent",
+      "name": "搜索结果去重 + 多样性评分",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m2"
+    },
+    {
+      "id": "design-agent-m2-c03",
+      "projectId": "design-agent",
+      "name": "错误恢复 + 重试机制（稳定性）",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m2"
+    },
+    {
+      "id": "design-agent-m3-c01",
+      "projectId": "design-agent",
+      "name": "Layer 4: 四维搜索策略矩阵",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m3"
+    },
+    {
+      "id": "design-agent-m3-c02",
+      "projectId": "design-agent",
+      "name": "Layer 5: 下载后视觉分析过滤",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m3"
+    },
+    {
+      "id": "design-agent-m3-c03",
+      "projectId": "design-agent",
+      "name": "参考图集报告生成（markdown + 缩略图）",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "design-agent-m3"
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c01",
+      "projectId": "ai-captain-dashboard",
+      "name": "FastAPI 后端 + React SPA 搭建",
+      "category": "技术",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m1"
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c02",
+      "projectId": "ai-captain-dashboard",
+      "name": "GitHub 数据同步脚本（auto_sync_projects.py）",
+      "category": "技术",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m1"
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c03",
+      "projectId": "ai-captain-dashboard",
+      "name": "飞书 OAuth 登录",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m1"
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c04",
+      "projectId": "ai-captain-dashboard",
+      "name": "Cloudflare Tunnel 部署上线",
+      "category": "技术",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m1"
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c05",
+      "projectId": "ai-captain-dashboard",
+      "name": "看板视图（4 阶段）+ 线/点 Drawer",
+      "category": "交付",
+      "fromStage": "需求拆解",
+      "toStage": "验证中",
+      "status": "done",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m1"
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c01",
+      "projectId": "ai-captain-dashboard",
+      "name": "阻塞项目主动推送飞书提醒",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m2"
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c02",
+      "projectId": "ai-captain-dashboard",
+      "name": "从 dashboard 更新 GitHub issue 状态（双向同步）",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m2"
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c03",
+      "projectId": "ai-captain-dashboard",
+      "name": "项目健康度指标（停滞天数、红灯逻辑）",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "pending",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m2"
+    },
+    {
+      "id": "ai-captain-dashboard-m3-c01",
+      "projectId": "ai-captain-dashboard",
+      "name": "多用户协作（按 GitHub assignee 分组）",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m3"
+    },
+    {
+      "id": "ai-captain-dashboard-m3-c02",
+      "projectId": "ai-captain-dashboard",
+      "name": "项目历史趋势图（周维度进度变化）",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Girish G Nair",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ai-captain-m3"
+    },
+    {
+      "id": "openclaw-skillhub-m1-c01",
+      "projectId": "openclaw-skillhub",
+      "name": "前端 SPA（React + Tailwind + Radix UI）",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m1"
+    },
+    {
+      "id": "openclaw-skillhub-m1-c02",
+      "projectId": "openclaw-skillhub",
+      "name": "后端 API（Fastify + Supabase）",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m1"
+    },
+    {
+      "id": "openclaw-skillhub-m1-c03",
+      "projectId": "openclaw-skillhub",
+      "name": "飞书 OAuth 认证",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m1"
+    },
+    {
+      "id": "openclaw-skillhub-m1-c04",
+      "projectId": "openclaw-skillhub",
+      "name": "Skill 列表 + 详情页",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m1"
+    },
+    {
+      "id": "openclaw-skillhub-m1-c05",
+      "projectId": "openclaw-skillhub",
+      "name": "Nginx 部署上线",
+      "category": "技术",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m1"
+    },
+    {
+      "id": "openclaw-skillhub-m2-c01",
+      "projectId": "openclaw-skillhub",
+      "name": "Skill 一键安装到本地 openclaw",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m2"
+    },
+    {
+      "id": "openclaw-skillhub-m2-c02",
+      "projectId": "openclaw-skillhub",
+      "name": "评分 + 评论系统",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m2"
+    },
+    {
+      "id": "openclaw-skillhub-m2-c03",
+      "projectId": "openclaw-skillhub",
+      "name": "关键词搜索 + 标签过滤",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m2"
+    },
+    {
+      "id": "openclaw-skillhub-m3-c01",
+      "projectId": "openclaw-skillhub",
+      "name": "Skill 版本控制 + Changelog 对比",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m3"
+    },
+    {
+      "id": "openclaw-skillhub-m3-c02",
+      "projectId": "openclaw-skillhub",
+      "name": "热门/最常用排行榜",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "openclaw-m3"
+    },
+    {
+      "id": "web-pilot-m1-c01",
+      "projectId": "web-pilot",
+      "name": "核心浏览器 session（Playwright + 持久化 context）",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m1"
+    },
+    {
+      "id": "web-pilot-m1-c02",
+      "projectId": "web-pilot",
+      "name": "Accessibility tree snapshot + Ref 系统",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m1"
+    },
+    {
+      "id": "web-pilot-m1-c03",
+      "projectId": "web-pilot",
+      "name": "反爬配置（75+ Chrome 参数）",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m1"
+    },
+    {
+      "id": "web-pilot-m1-c04",
+      "projectId": "web-pilot",
+      "name": "视觉 AI 集成（look / judge via Gemini）",
+      "category": "技术",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m1"
+    },
+    {
+      "id": "web-pilot-m1-c05",
+      "projectId": "web-pilot",
+      "name": "图片提取 + 下载功能",
+      "category": "交付",
+      "fromStage": "验证中",
+      "toStage": "试运行(MVP)",
+      "status": "done",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m1"
+    },
+    {
+      "id": "web-pilot-m2-c01",
+      "projectId": "web-pilot",
+      "name": "MCP server 模式（web-pilot serve）",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m2"
+    },
+    {
+      "id": "web-pilot-m2-c02",
+      "projectId": "web-pilot",
+      "name": "多 tab 并发任务支持",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m2"
+    },
+    {
+      "id": "web-pilot-m2-c03",
+      "projectId": "web-pilot",
+      "name": "更强反爬（通过 Skyscanner 级别站点）",
+      "category": "交付",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m2"
+    },
+    {
+      "id": "web-pilot-m3-c01",
+      "projectId": "web-pilot",
+      "name": "npm 公开发布 + 文档站",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m3"
+    },
+    {
+      "id": "web-pilot-m3-c02",
+      "projectId": "web-pilot",
+      "name": "CDP 直连模式（无 Playwright 开销）",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "swr222-cmd",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "web-pilot-m3"
+    },
+    {
+      "id": "ci-v2-m2-c01",
+      "projectId": "consumer-insight-v2",
+      "name": "多次研究结果横向对比视图",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m2"
+    },
+    {
+      "id": "ci-v2-m2-c02",
+      "projectId": "consumer-insight-v2",
+      "name": "报告分享链接（只读 token 访问）",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m2"
+    },
+    {
+      "id": "ci-v2-m2-c03",
+      "projectId": "consumer-insight-v2",
+      "name": "同关键词跨时间趋势图",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m2"
+    },
+    {
+      "id": "ci-v2-m3-c01",
+      "projectId": "consumer-insight-v2",
+      "name": "微博爬虫 + 三平台统一 schema",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m3"
+    },
+    {
+      "id": "ci-v2-m3-c02",
+      "projectId": "consumer-insight-v2",
+      "name": "定时自动报告 + 飞书推送",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m3"
+    },
+    {
+      "id": "ci-v2-m3-c03",
+      "projectId": "consumer-insight-v2",
+      "name": "竞品品牌情绪追踪",
+      "category": "交付",
+      "fromStage": "正式上线(PROD)",
+      "toStage": "正式上线(PROD)",
+      "status": "pending",
+      "owner": "Craybreeding",
+      "criteria": "",
+      "issue": "",
+      "dueDate": "",
+      "milestoneId": "ci-v2-m3"
     }
   ],
   "tasks": [
@@ -480,7 +1158,7 @@
       "title": "待做：launchd 自启 + cloudflared 迁移 + 抖音交互式登录",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "Craybreeding",
       "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/2"
     },
     {
@@ -490,7 +1168,7 @@
       "title": "v5.0.0 多账号管理 + 抖音双平台 (Phase 1-6) ✅",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "Craybreeding",
       "url": "https://github.com/goodidea-ggn/consumer-insight-v2/issues/1"
     },
     {
@@ -500,7 +1178,7 @@
       "title": "test milestone link",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "Girish G Nair",
       "url": "https://github.com/goodidea-ggn/ai-captain-dashboard/issues/1"
     },
     {
@@ -510,7 +1188,7 @@
       "title": "Feature: 把用户session会话和rag内存存入redis",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/111"
     },
     {
@@ -520,7 +1198,7 @@
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/110"
     },
     {
@@ -530,7 +1208,7 @@
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/109"
     },
     {
@@ -540,7 +1218,7 @@
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/107"
     },
     {
@@ -550,7 +1228,7 @@
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/105"
     },
     {
@@ -560,7 +1238,7 @@
       "title": "防止系统提示词泄漏",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/104"
     },
     {
@@ -570,7 +1248,7 @@
       "title": "精细化处理复杂 Excel 文件",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/100"
     },
     {
@@ -600,7 +1278,7 @@
       "title": "将 RAG 功能集成进入 Langfuse",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/97"
     },
     {
@@ -610,7 +1288,7 @@
       "title": "New Chat名字不会刷新",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/94"
     },
     {
@@ -620,7 +1298,7 @@
       "title": "新增本地账号密码登录用户有效期控制功能",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/84"
     },
     {
@@ -630,7 +1308,7 @@
       "title": "针对chat聊天框中的各类附件/文档/链接的专项优化",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/82"
     },
     {
@@ -640,7 +1318,7 @@
       "title": "升级google embedding模型",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/81"
     },
     {
@@ -660,7 +1338,7 @@
       "title": "[strategy_chat] 优化修改桃姐遇到的文件中公式列的问题",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/79"
     },
     {
@@ -680,7 +1358,7 @@
       "title": "引入 RAG 定期评判机制",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/77"
     },
     {
@@ -690,7 +1368,7 @@
       "title": "Strategy Chat: 以skill形式扩展应用的飞书文档权限",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/74"
     },
     {
@@ -700,7 +1378,7 @@
       "title": "把embedding 模型切换到gemini embedding 2",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/73"
     },
     {
@@ -710,7 +1388,7 @@
       "title": "XHS strategy optimize",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/71"
     },
     {
@@ -720,7 +1398,7 @@
       "title": "[strategy-chat] 错误：'ClientResponse' object is not subscriptable",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/70"
     },
     {
@@ -740,7 +1418,7 @@
       "title": "[strategy-chat] 错误反馈 - 服务器开小差了: Request failed: 401",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/68"
     },
     {
@@ -750,7 +1428,7 @@
       "title": "End to end workflow",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/66"
     },
     {
@@ -760,7 +1438,7 @@
       "title": "Logout when token refresh cannot be performed",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/65"
     },
     {
@@ -780,7 +1458,7 @@
       "title": "optimize UI docs upload approach",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/57"
     },
     {
@@ -790,7 +1468,7 @@
       "title": "Strategy Chat: 数据分析模块",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/54"
     },
     {
@@ -800,7 +1478,7 @@
       "title": "Strategy Chat: 创意",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/53"
     },
     {
@@ -810,7 +1488,7 @@
       "title": "优化analysis 对话框UI效果",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/50"
     },
     {
@@ -820,7 +1498,7 @@
       "title": "用户登陆重新成功登陆后，自动返回历史页面",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/45"
     },
     {
@@ -850,7 +1528,7 @@
       "title": "用户反馈：模型 503 Service Unavailable 错误显示优化",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/41"
     },
     {
@@ -880,7 +1558,7 @@
       "title": "Feature: Cache user chat history using Redis",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/34"
     },
     {
@@ -890,7 +1568,7 @@
       "title": "Bug: TypeError 'ClientResponse' object is not subscriptable during 429 error handling",
       "type": "bug",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/33"
     },
     {
@@ -900,7 +1578,7 @@
       "title": "Feature: Optimize chat UI for table display",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/strategy_chat/issues/32"
     },
     {
@@ -1000,7 +1678,7 @@
       "title": "星图项目登录 Bug：第一次登录失败，第二次点击直接显示已登录",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "swr222-cmd",
       "url": "https://github.com/goodidea-ggn/xingtu-selector/issues/12"
     },
     {
@@ -1020,7 +1698,7 @@
       "title": "筛选MCN的刊例",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "swr222-cmd",
       "url": "https://github.com/goodidea-ggn/xingtu-selector/issues/6"
     },
     {
@@ -1030,7 +1708,7 @@
       "title": "Project build script and scaffold init",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "swr222-cmd",
       "url": "https://github.com/goodidea-ggn/xingtu-selector/issues/3"
     },
     {
@@ -1040,7 +1718,7 @@
       "title": "Apply Tech Assistant into xingtu selector",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "swr222-cmd",
       "url": "https://github.com/goodidea-ggn/xingtu-selector/issues/1"
     },
     {
@@ -1140,7 +1818,7 @@
       "title": "Apply Tech Assistant into ggn workspace",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/ggn-workspace-frontend/issues/19"
     },
     {
@@ -1220,7 +1898,7 @@
       "title": "[tech-assistant] 建立系统监控机制：各产品用户活跃度统计",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/6"
     },
     {
@@ -1230,7 +1908,7 @@
       "title": "引入 RAG 定期评判机制",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/5"
     },
     {
@@ -1240,7 +1918,7 @@
       "title": "引入应用使用情况监控机制",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/4"
     },
     {
@@ -1250,7 +1928,7 @@
       "title": "research on DeepWiki-open and try integrate with it",
       "type": "feature",
       "status": "pending",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/3"
     },
     {
@@ -1260,7 +1938,7 @@
       "title": "Bug: Connection interrupted issue",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/2"
     },
     {
@@ -1270,7 +1948,7 @@
       "title": "Bug: Excessive 429 errors with Gemini 3.1",
       "type": "feature",
       "status": "done",
-      "assignee": "待确认",
+      "assignee": "supermaty",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/1"
     },
     {
@@ -1322,6 +2000,598 @@
       "status": "done",
       "assignee": "Craybreeding",
       "url": ""
+    },
+    {
+      "id": "design-agent-m1-c01-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m1-c01",
+      "title": "CLI 入口 + npm run agent 命令",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m1-c02-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m1-c02",
+      "title": "ReAct 循环（think → act → observe）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m1-c03-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m1-c03",
+      "title": "自然语言 brief → 关键词自动生成",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m1-c04-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m1-c04",
+      "title": "视觉相关性打分（judge 命令）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m1-c05-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m1-c05",
+      "title": "18+ 设计站点验证 + 图片下载",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m2-c01-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m2-c01",
+      "title": "Layer 3: 多站点并行搜索",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m2-c02-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m2-c02",
+      "title": "搜索结果去重 + 多样性评分",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m2-c03-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m2-c03",
+      "title": "错误恢复 + 重试机制（稳定性）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m3-c01-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m3-c01",
+      "title": "Layer 4: 四维搜索策略矩阵",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m3-c02-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m3-c02",
+      "title": "Layer 5: 下载后视觉分析过滤",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "design-agent-m3-c03-t1",
+      "projectId": "design-agent",
+      "conditionId": "design-agent-m3-c03",
+      "title": "参考图集报告生成（markdown + 缩略图）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c01-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m1-c01",
+      "title": "FastAPI 后端 + React SPA 搭建",
+      "status": "done",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c02-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m1-c02",
+      "title": "GitHub 数据同步脚本（auto_sync_projects.py）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c03-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m1-c03",
+      "title": "飞书 OAuth 登录",
+      "status": "done",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c04-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m1-c04",
+      "title": "Cloudflare Tunnel 部署上线",
+      "status": "done",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m1-c05-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m1-c05",
+      "title": "看板视图（4 阶段）+ 线/点 Drawer",
+      "status": "done",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c01-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m2-c01",
+      "title": "阻塞项目主动推送飞书提醒",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c02-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m2-c02",
+      "title": "从 dashboard 更新 GitHub issue 状态（双向同步）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m2-c03-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m2-c03",
+      "title": "项目健康度指标（停滞天数、红灯逻辑）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m3-c01-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m3-c01",
+      "title": "多用户协作（按 GitHub assignee 分组）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "ai-captain-dashboard-m3-c02-t1",
+      "projectId": "ai-captain-dashboard",
+      "conditionId": "ai-captain-dashboard-m3-c02",
+      "title": "项目历史趋势图（周维度进度变化）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Girish G Nair",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m1-c01-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m1-c01",
+      "title": "前端 SPA（React + Tailwind + Radix UI）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m1-c02-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m1-c02",
+      "title": "后端 API（Fastify + Supabase）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m1-c03-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m1-c03",
+      "title": "飞书 OAuth 认证",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m1-c04-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m1-c04",
+      "title": "Skill 列表 + 详情页",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m1-c05-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m1-c05",
+      "title": "Nginx 部署上线",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m2-c01-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m2-c01",
+      "title": "Skill 一键安装到本地 openclaw",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m2-c02-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m2-c02",
+      "title": "评分 + 评论系统",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m2-c03-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m2-c03",
+      "title": "关键词搜索 + 标签过滤",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m3-c01-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m3-c01",
+      "title": "Skill 版本控制 + Changelog 对比",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "openclaw-skillhub-m3-c02-t1",
+      "projectId": "openclaw-skillhub",
+      "conditionId": "openclaw-skillhub-m3-c02",
+      "title": "热门/最常用排行榜",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m1-c01-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m1-c01",
+      "title": "核心浏览器 session（Playwright + 持久化 context）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m1-c02-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m1-c02",
+      "title": "Accessibility tree snapshot + Ref 系统",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m1-c03-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m1-c03",
+      "title": "反爬配置（75+ Chrome 参数）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m1-c04-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m1-c04",
+      "title": "视觉 AI 集成（look / judge via Gemini）",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m1-c05-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m1-c05",
+      "title": "图片提取 + 下载功能",
+      "status": "done",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m2-c01-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m2-c01",
+      "title": "MCP server 模式（web-pilot serve）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m2-c02-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m2-c02",
+      "title": "多 tab 并发任务支持",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m2-c03-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m2-c03",
+      "title": "更强反爬（通过 Skyscanner 级别站点）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m3-c01-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m3-c01",
+      "title": "npm 公开发布 + 文档站",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "web-pilot-m3-c02-t1",
+      "projectId": "web-pilot",
+      "conditionId": "web-pilot-m3-c02",
+      "title": "CDP 直连模式（无 Playwright 开销）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "swr222-cmd",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m2-c01-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m2-c01",
+      "title": "多次研究结果横向对比视图",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m2-c02-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m2-c02",
+      "title": "报告分享链接（只读 token 访问）",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m2-c03-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m2-c03",
+      "title": "同关键词跨时间趋势图",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m3-c01-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m3-c01",
+      "title": "微博爬虫 + 三平台统一 schema",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m3-c02-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m3-c02",
+      "title": "定时自动报告 + 飞书推送",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    },
+    {
+      "id": "ci-v2-m3-c03-t1",
+      "projectId": "consumer-insight-v2",
+      "conditionId": "ci-v2-m3-c03",
+      "title": "竞品品牌情绪追踪",
+      "status": "pending",
+      "type": "feature",
+      "assignee": "Craybreeding",
+      "url": ""
+    }
+  ],
+  "milestones": [
+    {
+      "id": "design-agent-m1",
+      "projectId": "design-agent",
+      "label": "M1",
+      "title": "Layer 2 — Single-Site Search Agent",
+      "goal": "CLI ReAct agent 基础能力跑通，18+ 设计站点验证完毕",
+      "confirmed": true
+    },
+    {
+      "id": "design-agent-m2",
+      "projectId": "design-agent",
+      "label": "M2",
+      "title": "Multi-Site Search",
+      "goal": "一次 brief 自动跨多个站点搜索，输出多样化参考集",
+      "confirmed": false
+    },
+    {
+      "id": "design-agent-m3",
+      "projectId": "design-agent",
+      "label": "M3",
+      "title": "Search Strategy Matrix",
+      "goal": "四维搜索策略矩阵，覆盖竞品/类比/风格/执行四个维度",
+      "confirmed": false
+    },
+    {
+      "id": "ai-captain-m1",
+      "projectId": "ai-captain-dashboard",
+      "label": "M1",
+      "title": "Dashboard Launch",
+      "goal": "FastAPI + React 看板上线，GitHub 同步 + 飞书 OAuth 运行稳定",
+      "confirmed": true
+    },
+    {
+      "id": "ai-captain-m2",
+      "projectId": "ai-captain-dashboard",
+      "label": "M2",
+      "title": "Active Alerts & Bidirectional Sync",
+      "goal": "主动推送阻塞提醒，支持从 dashboard 直接更新 GitHub issue 状态",
+      "confirmed": true
+    },
+    {
+      "id": "ai-captain-m3",
+      "projectId": "ai-captain-dashboard",
+      "label": "M3",
+      "title": "Multi-User & Trends",
+      "goal": "多用户协作 + 项目历史趋势图，支持团队日常使用",
+      "confirmed": false
+    },
+    {
+      "id": "openclaw-m1",
+      "projectId": "openclaw-skillhub",
+      "label": "M1",
+      "title": "Skill Platform Launch",
+      "goal": "前端 + 后端 + Feishu OAuth + Nginx 部署全部上线",
+      "confirmed": true
+    },
+    {
+      "id": "openclaw-m2",
+      "projectId": "openclaw-skillhub",
+      "label": "M2",
+      "title": "Install & Discovery",
+      "goal": "一键安装 skill + 评分评论，好的 skill 更容易被发现",
+      "confirmed": false
+    },
+    {
+      "id": "openclaw-m3",
+      "projectId": "openclaw-skillhub",
+      "label": "M3",
+      "title": "Version Control",
+      "goal": "Skill 版本控制 + Changelog 对比 + 热门排行",
+      "confirmed": false
+    },
+    {
+      "id": "web-pilot-m1",
+      "projectId": "web-pilot",
+      "label": "M1",
+      "title": "Browser Tool MVP",
+      "goal": "Playwright session + Ref 系统 + 75+ 反爬 + Gemini 视觉，MVP 可用",
+      "confirmed": true
+    },
+    {
+      "id": "web-pilot-m2",
+      "projectId": "web-pilot",
+      "label": "M2",
+      "title": "Production Ready",
+      "goal": "MCP server 模式 + 多 tab 并发 + Skyscanner 级别反爬通过",
+      "confirmed": false
+    },
+    {
+      "id": "web-pilot-m3",
+      "projectId": "web-pilot",
+      "label": "M3",
+      "title": "Open Source & CDP",
+      "goal": "npm 公开发布 + CDP 直连模式（无 Playwright 开销）",
+      "confirmed": false
+    },
+    {
+      "id": "ci-v2-m1",
+      "projectId": "consumer-insight-v2",
+      "label": "M1",
+      "title": "PROD Launch",
+      "goal": "XHS+抖音爬取、Flash+Pro 分析、Web 看板、Excel/PDF 导出全部上线",
+      "confirmed": true
+    },
+    {
+      "id": "ci-v2-m2",
+      "projectId": "consumer-insight-v2",
+      "label": "M2",
+      "title": "Dashboard 增强",
+      "goal": "多次研究结果可对比，报告可分享，支持跨时间趋势图",
+      "confirmed": false
+    },
+    {
+      "id": "ci-v2-m3",
+      "projectId": "consumer-insight-v2",
+      "label": "M3",
+      "title": "Multi-Platform",
+      "goal": "微博爬虫 + 三平台统一 schema + 竞品品牌情绪追踪",
+      "confirmed": false
     }
   ]
 }

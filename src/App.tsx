@@ -4,7 +4,7 @@ import {
   BarChart3, FileEdit, Star, Bot, MessageSquare, Monitor, Brain, Package,
   X, AlertTriangle, ExternalLink, ChevronRight, ChevronDown, RefreshCw,
 } from 'lucide-react'
-import type { AppData, Condition, ConditionStatus, OperationStatus, Project, Stage, Task, TaskStatus } from './types'
+import type { AppData, Condition, ConditionStatus, Milestone, OperationStatus, Project, Stage, Task, TaskStatus } from './types'
 
 const STAGES: Stage[] = ['需求拆解', '验证中', '试运行(MVP)', '正式上线(PROD)']
 const OP_STATUSES: OperationStatus[] = ['进行中', '待启动', '已暂停', '已废弃']
@@ -152,6 +152,20 @@ export default function App() {
     }
   }
 
+  async function handleConfirmMilestone(milestoneId: string) {
+    const token = localStorage.getItem('captain_token')
+    const res = await fetch(`${BASE}/api/confirm-milestone`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify({ milestoneId }),
+    })
+    const body = await res.json()
+    if (body.ok) {
+      fetch(`${BASE}/data.json`).then(r => r.json()).then(setData)
+    }
+    return body
+  }
+
   // Auth gate
   if (checking) return (
     <div className="flex items-center justify-center min-h-screen text-lg text-slate-400 font-sans">验证中...</div>
@@ -203,6 +217,10 @@ export default function App() {
 
   const drawerConditions = selectedProject
     ? data.conditions.filter(c => c.projectId === selectedProject.id)
+    : []
+
+  const drawerMilestones = selectedProject
+    ? (data.milestones ?? []).filter(m => m.projectId === selectedProject.id)
     : []
 
   const drawerTasks = selectedProject
@@ -405,9 +423,11 @@ export default function App() {
                 ) : (
                   <UpgradePath
                     conditions={drawerConditions}
+                    milestones={drawerMilestones}
                     selected={selectedCondition}
                     onSelect={selectCondition}
                     tasks={drawerTasks}
+                    onConfirmMilestone={handleConfirmMilestone}
                   />
                 )}
                 <ProjectDetail project={selectedProject} />
@@ -538,14 +558,88 @@ function PersonChip({ label, name }: { label: string; name: string }) {
   )
 }
 
-// ── Upgrade Path (线) ─────────────────────────────────────
-function UpgradePath({
-  conditions, selected, onSelect, tasks
+// ── Condition Node ─────────────────────────────────────────
+function ConditionNode({
+  c, isLast, selected, onSelect, tasks
 }: {
-  conditions: Condition[]
+  c: Condition
+  isLast: boolean
   selected: Condition | null
   onSelect: (c: Condition) => void
   tasks: Task[]
+}) {
+  const isExpanded = selected?.id === c.id
+  return (
+    <div className="relative">
+      <button
+        className={`flex items-start gap-3 px-3 py-2.5 rounded-[10px] w-full text-left transition-colors
+          ${isExpanded ? 'bg-[var(--color-brand-100)]' : 'hover:bg-slate-50'}`}
+        onClick={() => onSelect(c)}
+        type="button"
+      >
+        <div className="relative flex flex-col items-center flex-shrink-0">
+          <div className={`w-2.5 h-2.5 rounded-full mt-[5px] border-2 relative z-[1]
+            ${c.status === 'done' ? 'bg-[var(--color-good)] border-[var(--color-good)]' :
+              c.status === 'active' ? 'bg-[var(--color-brand)] border-[var(--color-brand)]' :
+              c.status === 'blocked' ? 'bg-[var(--color-risk)] border-[var(--color-risk)]' :
+              'bg-white border-slate-300'}`}
+          />
+          {!isLast && (
+            <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-0.5 bg-slate-200 z-0"
+              style={{ height: 'calc(100% + 8px)' }} />
+          )}
+        </div>
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-[13px] font-medium">{c.name}</span>
+            <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md flex-shrink-0 ${COND_BADGE[c.status]}`}>
+              {COND_STATUS_LABEL[c.status]}
+            </span>
+          </div>
+          <div className="flex gap-2 mt-1 text-[11px] text-[var(--color-text-muted)]">
+            {c.owner && c.owner !== '待确认' && <span className="font-medium">{c.owner}</span>}
+            {c.dueDate && <DueDate date={c.dueDate} done={c.status === 'done'} />}
+          </div>
+        </div>
+        {isExpanded
+          ? <ChevronDown size={14} className="text-[var(--color-text-muted)] flex-shrink-0 mt-1" />
+          : <ChevronRight size={14} className="text-[var(--color-text-muted)] flex-shrink-0 mt-1" />
+        }
+      </button>
+      {isExpanded && (
+        <div className="pl-[34px] py-1 pb-2">
+          {tasks.length === 0 ? (
+            <div className="text-xs text-[var(--color-text-muted)] py-1.5">暂无关联任务</div>
+          ) : (
+            tasks.map(t => (
+              <div key={t.id} className="flex items-center gap-2 py-1 text-xs">
+                <span className={`w-[7px] h-[7px] rounded-full flex-shrink-0 ${COND_DOT[t.status as ConditionStatus] || 'bg-slate-300'}`} />
+                <span className="flex-1 min-w-0 truncate">{t.title}</span>
+                {t.url && (
+                  <a href={t.url} target="_blank" rel="noreferrer"
+                    className="text-[var(--color-brand)] hover:opacity-70 transition-opacity">
+                    <ExternalLink size={12} />
+                  </a>
+                )}
+              </div>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// ── Upgrade Path (线) ─────────────────────────────────────
+function UpgradePath({
+  conditions, milestones, selected, onSelect, tasks, onConfirmMilestone
+}: {
+  conditions: Condition[]
+  milestones: Milestone[]
+  selected: Condition | null
+  onSelect: (c: Condition) => void
+  tasks: Task[]
+  onConfirmMilestone: (milestoneId: string) => Promise<{ok: boolean}>
 }) {
   const done = conditions.filter(c => c.status === 'done').length
   const pct = conditions.length ? Math.round((done / conditions.length) * 100) : 0
@@ -558,9 +652,42 @@ function UpgradePath({
     tasksByCondition.set(t.conditionId, arr)
   }
 
+  const [confirming, setConfirming] = useState<string | null>(null)
+  const [confirmMsg, setConfirmMsg] = useState<Record<string, string>>({})
+
+  async function handleConfirm(milestoneId: string) {
+    setConfirming(milestoneId)
+    try {
+      const res = await onConfirmMilestone(milestoneId)
+      setConfirmMsg(prev => ({ ...prev, [milestoneId]: res.ok ? '已同步到 GitHub ✓' : '同步失败' }))
+    } finally {
+      setConfirming(null)
+      setTimeout(() => setConfirmMsg(prev => { const n = {...prev}; delete n[milestoneId]; return n }), 4000)
+    }
+  }
+
+  // Group conditions by milestone
+  const ungrouped = conditions.filter(c => !c.milestoneId)
+  const byMilestone = milestones.map(m => ({
+    milestone: m,
+    conds: conditions.filter(c => c.milestoneId === m.id),
+  })).filter(g => g.conds.length > 0)
+
+  const renderConditions = (conds: Condition[]) =>
+    conds.map((c, i) => (
+      <ConditionNode
+        key={c.id}
+        c={c}
+        isLast={i === conds.length - 1}
+        selected={selected}
+        onSelect={onSelect}
+        tasks={tasksByCondition.get(c.id) ?? []}
+      />
+    ))
+
   return (
     <div className="mb-5">
-      {/* Progress header */}
+      {/* Overall progress header */}
       <div className="mb-4">
         <div className="flex justify-between items-center text-xs text-[var(--color-text-secondary)] mb-1.5">
           <span>{done}/{conditions.length} 升级路径</span>
@@ -572,79 +699,58 @@ function UpgradePath({
         </div>
       </div>
 
-      {/* Nodes */}
-      <div className="flex flex-col">
-        {conditions.map((c, i) => {
-          const isExpanded = selected?.id === c.id
-          const condTasks = tasksByCondition.get(c.id) ?? []
-          return (
-            <div key={c.id} className="relative">
-              <button
-                className={`flex items-start gap-3 px-3 py-2.5 rounded-[10px] w-full text-left transition-colors
-                  ${isExpanded ? 'bg-[var(--color-brand-100)]' : 'hover:bg-slate-50'}`}
-                onClick={() => onSelect(c)}
-                type="button"
-              >
-                {/* Dot + Line */}
-                <div className="relative flex flex-col items-center flex-shrink-0">
-                  <div className={`w-2.5 h-2.5 rounded-full mt-[5px] border-2 relative z-[1]
-                    ${c.status === 'done' ? 'bg-[var(--color-good)] border-[var(--color-good)]' :
-                      c.status === 'active' ? 'bg-[var(--color-brand)] border-[var(--color-brand)]' :
-                      c.status === 'blocked' ? 'bg-[var(--color-risk)] border-[var(--color-risk)]' :
-                      'bg-white border-slate-300'}`}
-                  />
-                  {i < conditions.length - 1 && (
-                    <div className="absolute left-1/2 -translate-x-1/2 top-[18px] w-0.5 bg-slate-200 z-0"
-                      style={{ height: 'calc(100% + 8px)' }} />
+      {/* Milestone groups */}
+      {byMilestone.length > 0 ? (
+        <div className="flex flex-col gap-4">
+          {byMilestone.map(({ milestone: m, conds }) => {
+            const mDone = conds.filter(c => c.status === 'done').length
+            return (
+              <div key={m.id} className={`rounded-[12px] border ${m.confirmed ? 'border-slate-200 bg-white' : 'border-dashed border-slate-300 bg-slate-50/60'}`}>
+                {/* Milestone header */}
+                <div className="px-3 pt-3 pb-2">
+                  <div className="flex items-start justify-between gap-2 mb-1">
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className={`text-[11px] font-bold px-2 py-0.5 rounded-md flex-shrink-0 ${m.confirmed ? 'bg-[var(--color-brand)] text-white' : 'bg-slate-200 text-slate-500'}`}>
+                        {m.label}
+                      </span>
+                      <span className="text-[13px] font-semibold text-[var(--color-text-primary)]">{m.title}</span>
+                      {!m.confirmed && (
+                        <span className="text-[10px] font-medium text-slate-400 border border-slate-300 rounded px-1.5 py-0.5 flex-shrink-0">建议</span>
+                      )}
+                    </div>
+                    <span className="text-[11px] text-[var(--color-text-muted)] flex-shrink-0 mt-0.5">{mDone}/{conds.length}</span>
+                  </div>
+                  <p className="text-[11px] text-[var(--color-text-muted)] leading-relaxed mb-2">{m.goal}</p>
+                  {!m.confirmed && (
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleConfirm(m.id)}
+                        disabled={confirming === m.id}
+                        className="text-[11px] font-medium text-white bg-[var(--color-brand)] px-2.5 py-1 rounded-md hover:opacity-80 transition-opacity disabled:opacity-50"
+                      >
+                        {confirming === m.id ? '同步中...' : '确认并同步 GitHub'}
+                      </button>
+                      {confirmMsg[m.id] && (
+                        <span className="text-[11px] text-[var(--color-good)] font-medium">{confirmMsg[m.id]}</span>
+                      )}
+                    </div>
                   )}
                 </div>
-
-                {/* Body */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-[13px] font-medium">{c.name}</span>
-                    <span className={`text-[11px] font-semibold px-2 py-0.5 rounded-md flex-shrink-0 ${COND_BADGE[c.status]}`}>
-                      {COND_STATUS_LABEL[c.status]}
-                    </span>
-                  </div>
-                  <div className="flex gap-2 mt-1 text-[11px] text-[var(--color-text-muted)]">
-                    {c.owner && c.owner !== '待确认' && <span className="font-medium">{c.owner}</span>}
-                    {c.dueDate && <DueDate date={c.dueDate} done={c.status === 'done'} />}
-                  </div>
+                {/* Conditions */}
+                <div className="px-1 pb-1">
+                  {renderConditions(conds)}
                 </div>
-
-                {/* Arrow */}
-                {isExpanded
-                  ? <ChevronDown size={14} className="text-[var(--color-text-muted)] flex-shrink-0 mt-1" />
-                  : <ChevronRight size={14} className="text-[var(--color-text-muted)] flex-shrink-0 mt-1" />
-                }
-              </button>
-
-              {/* Expanded tasks */}
-              {isExpanded && (
-                <div className="pl-[34px] py-1 pb-2">
-                  {condTasks.length === 0 ? (
-                    <div className="text-xs text-[var(--color-text-muted)] py-1.5">暂无关联任务</div>
-                  ) : (
-                    condTasks.map(t => (
-                      <div key={t.id} className="flex items-center gap-2 py-1 text-xs">
-                        <span className={`w-[7px] h-[7px] rounded-full flex-shrink-0 ${COND_DOT[t.status as ConditionStatus] || 'bg-slate-300'}`} />
-                        <span className="flex-1 min-w-0 truncate">{t.title}</span>
-                        {t.url && (
-                          <a href={t.url} target="_blank" rel="noreferrer"
-                            className="text-[var(--color-brand)] hover:opacity-70 transition-opacity">
-                            <ExternalLink size={12} />
-                          </a>
-                        )}
-                      </div>
-                    ))
-                  )}
-                </div>
-              )}
-            </div>
-          )
-        })}
-      </div>
+              </div>
+            )
+          })}
+          {/* Ungrouped fallback */}
+          {ungrouped.length > 0 && (
+            <div className="flex flex-col">{renderConditions(ungrouped)}</div>
+          )}
+        </div>
+      ) : (
+        <div className="flex flex-col">{renderConditions(conditions)}</div>
+      )}
     </div>
   )
 }

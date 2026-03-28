@@ -233,6 +233,62 @@ async def sync_data(user=Depends(require_auth)):
         return JSONResponse(500, {"ok": False, "error": str(e)})
 
 
+# ── Confirm Milestone → Sync to GitHub ───────────
+@app.post(f"{BASE_PATH}/api/confirm-milestone")
+async def confirm_milestone(request: Request, user=Depends(require_auth)):
+    body = await request.json()
+    milestone_id = body.get("milestoneId", "")
+
+    data = json.loads(DATA_FILE.read_text())
+
+    milestone = next((m for m in data.get("milestones", []) if m["id"] == milestone_id), None)
+    if not milestone:
+        raise HTTPException(404, "Milestone not found")
+    if milestone.get("confirmed"):
+        return {"ok": True, "already_confirmed": True}
+
+    project = next((p for p in data["projects"] if p["id"] == milestone["projectId"]), None)
+    if not project:
+        raise HTTPException(404, "Project not found")
+
+    repo = project.get("githubRepo") or f"goodidea-ggn/{project['id']}"
+    gh_title = f"{milestone['label']}: {milestone['title']}"
+    gh_desc = f"目标: {milestone['goal']}"
+
+    # Create GitHub milestone
+    r = subprocess.run(
+        ["gh", "api", f"repos/{repo}/milestones", "--method", "POST",
+         "-f", f"title={gh_title}", "-f", f"description={gh_desc}"],
+        capture_output=True, text=True
+    )
+    if r.returncode != 0:
+        raise HTTPException(500, f"GitHub milestone creation failed: {r.stderr[-300:]}")
+
+    gh_milestone_number = json.loads(r.stdout)["number"]
+
+    # Create issues for each condition in this milestone
+    conditions = [c for c in data["conditions"] if c.get("milestoneId") == milestone_id]
+    for c in conditions:
+        subprocess.run(
+            ["gh", "issue", "create", "--repo", repo,
+             "--title", c["name"], "--body", f"Milestone: {gh_title}",
+             "--milestone", gh_title],
+            capture_output=True, text=True
+        )
+
+    # Mark confirmed in data.json
+    for m in data["milestones"]:
+        if m["id"] == milestone_id:
+            m["confirmed"] = True
+            break
+    DATA_FILE.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+    dist_data = DIST / "data.json"
+    if DIST.exists():
+        dist_data.write_text(DATA_FILE.read_text())
+
+    return {"ok": True, "milestone": gh_title, "issues_created": len(conditions), "gh_number": gh_milestone_number}
+
+
 # ── Static SPA Serving ───────────────────────────
 # Mount static assets (JS/CSS/images)
 if DIST.exists():
