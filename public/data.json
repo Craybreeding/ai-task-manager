@@ -8,7 +8,7 @@
       "operationStatus": "进行中",
       "status": "green",
       "sponsor": "待确认",
-      "captain": "Craybreeding",
+      "captain": "待确认",
       "blocker": "待确认",
       "currentFocus": "项目驾驶舱看板，自动从GitHub同步项目状态",
       "nextCheckpoint": "待确认",
@@ -120,6 +120,24 @@
       "blocker": "待确认",
       "currentFocus": "AI assistant 插件集成",
       "nextCheckpoint": "",
+      "latestFeedback": "",
+      "feedbackFrom": "",
+      "wau": 0,
+      "weeklyRuns": 0,
+      "hoursSaved": 0
+    },
+    {
+      "id": "noodle-monitor",
+      "name": "noodle-monitor",
+      "stage": "验证中",
+      "targetStage": "试运行(MVP)",
+      "operationStatus": "进行中",
+      "status": "green",
+      "sponsor": "待确认",
+      "captain": "待确认",
+      "blocker": "待确认",
+      "currentFocus": "待确认",
+      "nextCheckpoint": "待确认",
       "latestFeedback": "",
       "feedbackFrom": "",
       "wau": 0,
@@ -386,7 +404,8 @@
       "category": "功能完善",
       "fromStage": "正式上线(PROD)",
       "toStage": "正式上线(PROD)",
-      "status": "pending",
+      "status": "done",
+      "milestoneId": "ci-v2-m1",
       "owner": "",
       "criteria": "XHS+Douyin crawling, Flash+Pro analysis, web dashboard, Excel/PDF export, Cloudflare deploy.",
       "issue": "",
@@ -397,9 +416,10 @@
       "projectId": "ai-captain-dashboard",
       "name": "M1: Dashboard Launch",
       "category": "功能完善",
-      "fromStage": "验证中",
-      "toStage": "试运行(MVP)",
-      "status": "pending",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
+      "status": "done",
+      "milestoneId": "ai-captain-m1",
       "owner": "",
       "criteria": "FastAPI + React SPA, GitHub sync, Feishu OAuth, Cloudflare Tunnel.",
       "issue": "",
@@ -410,9 +430,10 @@
       "projectId": "ai-captain-dashboard",
       "name": "M2: Active Alerts & Bidirectional Sync",
       "category": "功能完善",
-      "fromStage": "验证中",
-      "toStage": "试运行(MVP)",
+      "fromStage": "试运行(MVP)",
+      "toStage": "正式上线(PROD)",
       "status": "pending",
+      "milestoneId": "ai-captain-m2",
       "owner": "",
       "criteria": "目标: 主动推送阻塞提醒，支持从 dashboard 直接更新 GitHub issue 状态",
       "issue": "",
@@ -425,7 +446,8 @@
       "category": "功能完善",
       "fromStage": "验证中",
       "toStage": "试运行(MVP)",
-      "status": "pending",
+      "status": "done",
+      "milestoneId": "design-agent-m1",
       "owner": "",
       "criteria": "CLI ReAct agent for design reference search. 18+ sites validated.",
       "issue": "",
@@ -438,7 +460,8 @@
       "category": "功能完善",
       "fromStage": "试运行(MVP)",
       "toStage": "正式上线(PROD)",
-      "status": "pending",
+      "status": "done",
+      "milestoneId": "web-pilot-m1",
       "owner": "",
       "criteria": "Playwright session, Ref system, 75+ anti-detection args, Gemini vision, image download.",
       "issue": "",
@@ -451,7 +474,8 @@
       "category": "功能完善",
       "fromStage": "正式上线(PROD)",
       "toStage": "正式上线(PROD)",
-      "status": "pending",
+      "status": "done",
+      "milestoneId": "openclaw-m1",
       "owner": "",
       "criteria": "Frontend SPA, Fastify+Supabase backend, Feishu OAuth, Nginx deploy.",
       "issue": "",
@@ -1558,6 +1582,128 @@
       "status": "done",
       "assignee": "待确认",
       "url": "https://github.com/goodidea-ggn/tech-assistant/issues/1"
+    }
+  ],
+  "milestones": [
+    {
+      "id": "design-agent-m1",
+      "projectId": "design-agent",
+      "label": "M1",
+      "title": "Layer 2 — Single-Site Search Agent",
+      "goal": "CLI ReAct agent 基础能力跑通，18+ 设计站点验证完毕",
+      "confirmed": true
+    },
+    {
+      "id": "design-agent-m2",
+      "projectId": "design-agent",
+      "label": "M2",
+      "title": "Multi-Site Search",
+      "goal": "一次 brief 自动跨多个站点搜索，输出多样化参考集",
+      "confirmed": false
+    },
+    {
+      "id": "design-agent-m3",
+      "projectId": "design-agent",
+      "label": "M3",
+      "title": "Search Strategy Matrix",
+      "goal": "四维搜索策略矩阵，覆盖竞品/类比/风格/执行四个维度",
+      "confirmed": false
+    },
+    {
+      "id": "ai-captain-m1",
+      "projectId": "ai-captain-dashboard",
+      "label": "M1",
+      "title": "Dashboard Launch",
+      "goal": "FastAPI + React 看板上线，GitHub 同步 + 飞书 OAuth 运行稳定",
+      "confirmed": true
+    },
+    {
+      "id": "ai-captain-m2",
+      "projectId": "ai-captain-dashboard",
+      "label": "M2",
+      "title": "Active Alerts & Bidirectional Sync",
+      "goal": "主动推送阻塞提醒，支持从 dashboard 直接更新 GitHub issue 状态",
+      "confirmed": true
+    },
+    {
+      "id": "ai-captain-m3",
+      "projectId": "ai-captain-dashboard",
+      "label": "M3",
+      "title": "Multi-User & Trends",
+      "goal": "多用户协作 + 项目历史趋势图，支持团队日常使用",
+      "confirmed": false
+    },
+    {
+      "id": "openclaw-m1",
+      "projectId": "openclaw-skillhub",
+      "label": "M1",
+      "title": "Skill Platform Launch",
+      "goal": "前端 + 后端 + Feishu OAuth + Nginx 部署全部上线",
+      "confirmed": true
+    },
+    {
+      "id": "openclaw-m2",
+      "projectId": "openclaw-skillhub",
+      "label": "M2",
+      "title": "Install & Discovery",
+      "goal": "一键安装 skill + 评分评论，好的 skill 更容易被发现",
+      "confirmed": false
+    },
+    {
+      "id": "openclaw-m3",
+      "projectId": "openclaw-skillhub",
+      "label": "M3",
+      "title": "Version Control",
+      "goal": "Skill 版本控制 + Changelog 对比 + 热门排行",
+      "confirmed": false
+    },
+    {
+      "id": "web-pilot-m1",
+      "projectId": "web-pilot",
+      "label": "M1",
+      "title": "Browser Tool MVP",
+      "goal": "Playwright session + Ref 系统 + 75+ 反爬 + Gemini 视觉，MVP 可用",
+      "confirmed": true
+    },
+    {
+      "id": "web-pilot-m2",
+      "projectId": "web-pilot",
+      "label": "M2",
+      "title": "Production Ready",
+      "goal": "MCP server 模式 + 多 tab 并发 + Skyscanner 级别反爬通过",
+      "confirmed": false
+    },
+    {
+      "id": "web-pilot-m3",
+      "projectId": "web-pilot",
+      "label": "M3",
+      "title": "Open Source & CDP",
+      "goal": "npm 公开发布 + CDP 直连模式（无 Playwright 开销）",
+      "confirmed": false
+    },
+    {
+      "id": "ci-v2-m1",
+      "projectId": "consumer-insight-v2",
+      "label": "M1",
+      "title": "PROD Launch",
+      "goal": "XHS+抖音爬取、Flash+Pro 分析、Web 看板、Excel/PDF 导出全部上线",
+      "confirmed": true
+    },
+    {
+      "id": "ci-v2-m2",
+      "projectId": "consumer-insight-v2",
+      "label": "M2",
+      "title": "Dashboard 增强",
+      "goal": "多次研究结果可对比，报告可分享，支持跨时间趋势图",
+      "confirmed": false
+    },
+    {
+      "id": "ci-v2-m3",
+      "projectId": "consumer-insight-v2",
+      "label": "M3",
+      "title": "Multi-Platform",
+      "goal": "微博爬虫 + 三平台统一 schema + 竞品品牌情绪追踪",
+      "confirmed": false
     }
   ]
 }

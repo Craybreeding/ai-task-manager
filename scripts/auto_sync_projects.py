@@ -122,10 +122,7 @@ def fetch_milestones(repo_name: str) -> list[dict]:
     """读取 GitHub Milestones（含 open + closed）"""
     try:
         raw = run_gh([
-            "api", f"repos/{ORG}/{repo_name}/milestones",
-            "--method", "GET",
-            "-f", "state=all",
-            "-f", "per_page=50",
+            "api", f"repos/{ORG}/{repo_name}/milestones?state=all&per_page=50",
         ])
         return json.loads(raw)
     except subprocess.CalledProcessError:
@@ -296,8 +293,17 @@ def detect_captain(issues: list, repo_name: str) -> str:
 MILESTONE_CATEGORIES = {"功能完善", "质量保障", "运维稳定", "用户验证", "文档规范"}
 
 
-def milestones_to_conditions(milestones: list[dict], project_id: str, stage: str, target_stage: str) -> list[dict]:
-    """把 GitHub Milestones 转成 data.json 的 conditions 格式"""
+def milestones_to_conditions(milestones: list[dict], project_id: str, stage: str, target_stage: str, ui_milestones: list[dict] | None = None) -> list[dict]:
+    """把 GitHub Milestones 转成 data.json 的 conditions 格式。
+    ui_milestones: data.json 中的 milestones[] 数组，用于自动关联 milestoneId。
+    """
+    # 建立 condition id → UI milestone id 的映射（通过 title 模糊匹配）
+    ui_ms_map: dict[str, str] = {}
+    if ui_milestones:
+        for um in ui_milestones:
+            if um.get("projectId") == project_id:
+                ui_ms_map[um.get("title", "").lower()] = um["id"]
+
     conditions = []
     for ms in milestones:
         ms_number = ms.get("number", 0)
@@ -327,10 +333,21 @@ def milestones_to_conditions(milestones: list[dict], project_id: str, stage: str
         else:
             open_count = ms.get("open_issues", 0)
             closed_count = ms.get("closed_issues", 0)
-            if closed_count > 0 and open_count > 0:
+            if open_count == 0 and closed_count > 0:
+                # All issues closed but milestone still open → treat as done
+                cond_status = "done"
+            elif closed_count > 0 and open_count > 0:
                 cond_status = "active"
             else:
                 cond_status = "pending"
+
+        # 自动匹配 UI milestone（通过 title 包含关系）
+        matched_ms_id = ""
+        title_lower = title.lower()
+        for ms_title, ms_id in ui_ms_map.items():
+            if ms_title in title_lower or title_lower in ms_title:
+                matched_ms_id = ms_id
+                break
 
         conditions.append({
             "id": f"ms-{project_id}-{ms_number}",
@@ -340,6 +357,7 @@ def milestones_to_conditions(milestones: list[dict], project_id: str, stage: str
             "fromStage": from_stage,
             "toStage": to_stage,
             "status": cond_status,
+            "milestoneId": matched_ms_id,
             "owner": "",  # 从 issues assignees 推断
             "criteria": criteria,
             "issue": "",
@@ -871,7 +889,7 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False, gen_conditio
         if with_issues:
             # Milestones → Conditions (GitHub 是唯一数据源)
             if milestones:
-                ms_conditions = milestones_to_conditions(milestones, project_id, final_stage, project["targetStage"])
+                ms_conditions = milestones_to_conditions(milestones, project_id, final_stage, project["targetStage"], existing.get("milestones", []))
                 # 替换该项目的旧条件
                 existing_conditions = [c for c in existing_conditions if c["projectId"] != project_id]
                 existing_conditions.extend(ms_conditions)
@@ -969,6 +987,7 @@ def sync_projects(with_issues: bool = False, use_llm: bool = False, gen_conditio
         "projects": projects,
         "conditions": existing_conditions,
         "tasks": all_tasks,
+        "milestones": existing.get("milestones", []),
     }
 
 
